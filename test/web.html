@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div id="contentToReplace">
+            <p>Đây là nội dung được thay thế.</p>
+        </div>
+
+        <button id="clickme">
+            click me
+        </button>
+    </div>
+
+    <script>
+        var button = document.getElementById('clickme');
+
+        button.addEventListener('click', function () {
+            var elementToReplace = document.getElementById('contentToReplace');
+    
+            // Fetch HTML từ một URL khác
+            fetch('home.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Gán nội dung mới cho phần tử
+                    elementToReplace.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error fetching content:', error);
+                });
+        });
+    </script>
+
+
+
+
+
+
+
+    <!-- <h1>Dữ liệu từ SQL Server</h1>
+    <ul id="data-list"></ul>
+
+    <script>
+        fetch('http://localhost:5000/data')
+            .then(response => response.json())
+            .then(data => {
+                const dataList = document.getElementById('data-list');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.ID}: ${item.Name}: ${item.Price}: ${item.Category}: ${item.Sale}: ${item.Content}`;
+                    dataList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Lỗi:', error));
+    </script> -->
+</body>
+
+</html>

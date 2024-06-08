@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-top">
+                <div class="grid">
+                    <nav class="header__navbar">
+                        <ul class="header__navbar-list">
+                            <li class="header__navbar-item header__navbar-item--separate">
+                                <a href="" class="header__navbar-link">Hệ Thống Cửa Hàng</a>
+                            </li>
+                            <li class="header__navbar-item">
+                                <span class="header__navbar-title">Liên Hệ Hỗ Trợ</span>
+                                <a href="" class="header__navvar-icon-link">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="" class="header__navvar-icon-link">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+        
+                        <ul class="header__navbar-list">
+                            <li class="header__navbar-item header__navbar-item--separate">Đăng nhập</li>
+                            <li class="header__navbar-item">Đăng ký</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- Header with search -->
+            <div class="header-center">
+                <div class="header__logo">
+                    <a href="web.html">
+                        <img class="header__logo-img" src="./assets/img/logo.png" alt="">
+
+                    </a>
+                </div>
+                <div class="header__search">
+                    <input type="text" class="header__search-input" placeholder="Bạn muốn mua gì?">
+                    <button class="header__search-btn">
+                        Tìm kiếm
+                        <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <!-- Cart layout -->
+                <div class="header__cart">
+                    <div class="header__cart-wrap">
+                        <button class="header__cart-btn">
+                            Giỏ hàng của bạn
+                            <i class="header__cart-icon fa-solid fa-cart-shopping"></i>  
+                        </button>
+                        <span class="header__cart-notice" id="countgiohang">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="app__container">
+            <nav class="category">
+                <div class="category-wrap">
+                    <h3 class="category-dmsp">
+                            <i class="category-dmsp__icon fa-solid fa-list"></i>
+                            Danh mục sản phẩm
+                    </h3>
+                    <div class="dmsp-list">
+                        <ul class="dmsp-list-item">
+                            <li class="dmsp-item__solid dmsp-item">
+                                Sách Tiếng Việt
+                                <i class="dmsp-item__icon fa-solid fa-chevron-right"></i>
+                            </li>
+    
+                            <li class="dmsp-item__solid dmsp-item">
+                                Sách Ngoại Văn
+                            </li>
+    
+                            <li class="dmsp-item__solid dmsp-item">
+                                Văn Phòng Phẩm
+                                <i class="dmsp-item__icon fa-solid fa-chevron-right"></i>
+                            </li>
+    
+                            <li class="dmsp-item__solid dmsp-item">
+                                Đồ Trang Trí - Lưu Niệm
+                            </li>
+    
+                            <li class="dmsp-item__solid dmsp-item">
+                                Theo Nhà Cung Cấp
+                                <i class="dmsp-item__icon fa-solid fa-chevron-right"></i>
+                            </li>
+    
+                            <li class="dmsp-item__solid dmsp-item">
+                                Gợi Ý Quà Tặng
+                            </li>
+    
+                            <li class="dmsp-item">
+                                Sách Có Chữ Ký
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            
+
+                <ul class="category-list">
+                    <li class="category-item">
+                        <a href="#" class="category-item__link">Sách Thiếu Nhi</a>
+                    </li>
+
+                    <li class="category-item">
+                        <a href="#" class="category-item__link">Sách Văn Học</a>
+                    </li>
+
+                    <li class="category-item">
+                        <a href="#" class="category-item__link">Trinh Thám</a>
+                    </li>
+
+                    <li class="category-item">
+                        <a href="#" class="category-item__link">Sách Có Chữ Ký</a>
+                    </li>
+
+                    <li class="category-item">
+                        <a href="#" class="category-item__link">Văn Phòng Phẩm</a>
+                    </li>
+
+                    
+                </ul>
+            </nav>
+            <!-- BANNER -->
+            
+            <div class="banner">
+                <div class="banner__img2">
+                    <a href="#">
+                        <img src="https://theme.hstatic.net/1000363117/1000911694/14/ms_banner_img4.jpg?v=287" alt="img">
+                    </a>
+                </div>
+            </div>
+
+            <div class="page-source">
+                <a href="web.html" class="home-page">TRANG CHỦ</a> / SÁCH MỚI PHÁT HÀNH
+            </div>
+
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-2">
+                            <div class="home-filter1">
+                                <h3 class="home-filter__label">Sắp xếp theo</h3>
+                                <button class="home-filter__btn btn">Phổ Biến</button>
+                                <button class="home-filter__btn btn btn--primary">Mới Nhất</button>
+                                <a href="spbanchaypage1.html">
+                                    <button class="home-filter__btn btn">Bán Chạy</button>
+                                </a>
+                            </div>
+                    </div>
+
+                    <div class="grid__column-10">
+
+                        <div class="home-filter2">
+                            <div class="select-input">
+                                <span class="select-input__label">Giá</span>
+                                <i class="select-input__icon fas fa-angle-down"></i>
+                                <!-- List Options -->
+                                <ul class="select-input__list">
+                                    <li class="select-input__item">
+                                        <a href="" class="select-input__link">Giá: Thấp đến cao</a>
+                                    </li>
+
+                                    <li class="select-input__item">
+                                        <a href="" class="select-input__link">Giá: Cao đến thấp</a>
+                                    </li>
+                                </ul>
+                            </div>
+    
+                            <div class="home-filter__page">
+                                <span class="home-filter__page-num">
+                                    <span class="home-filter__page-current">3</span>/3
+                                </span>
+    
+                                <div class="home-filter__page-control">
+                                    <a href="spmoipage2.html" class="home-filter__page-btn">
+                                        <i class="home-filter__page-icon fas fa-angle-left"></i>
+                                    </a>
+    
+                                    <a class="home-filter__page-btn home-filter__page-btn--disabled">
+                                        <i class="home-filter__page-icon fas fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="home-product">
+                            <div class="grid__row">
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="DocToNam.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/ho-la-ai---sieu-con-nguoi_f35fbb186a2a4589bf8e36028a33047c_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">HỌ LÀ AI? - SIÊU CON NGƯỜI</h4>
+
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>67.500</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">75.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="NguoiChuaLanh.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/ho-la-ai---cac-nha-nu-quyen_fc5693196e7747fba523d8c73612ce6d_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">HỌ LÀ AI? - CÁC NHÀ NỮ QUYỀN</h4>
+
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>67.100</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">75.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="KhamSucKhoe.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/ho-la-ai---tin-tac_bb3d98e70e2745f9ad9fa2eed2b4bf8b_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">HỌ LÀ AI? -TIN TẶC</h4>
+                                            
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>67.100</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">75.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item" href="">
+                                        <a href="TuDien.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/who---chuyen-ke-ve-danh-nhan-the-gioi-pele---tb-2023_4fdd0c30c88049bdab39681d554e3c40_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">WHO? CHUYỆN KỂ VỀ DANH NHÂN THẾ GIỚI: PELE</h4>
+
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>54.200</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">60.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="39.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/co-rong-khong-thich-lua_813a336ee94d4d71bbe683d2c8bd4747_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">CÔ RỒNG KHÔNG THÍCH LỬA</h4>
+
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>36.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">40.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="39CauHoi.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/chu-ca-sau-khong-thich-nuoc_3ceb7583fced4658abd529b57eb426ab_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">CHÚ CÁ SẤU KHÔNG THÍCH NƯỚC</h4>
+
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>36.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">40.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="LamChaMe.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/co-cuu-ap-trung_e706315c0fbc42b29188072d7ae1c5a1_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">CÔ CỪU ẤP TRỨNG</h4>
+
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>36.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">40.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="TuChuTinhThan.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/co-bo-treo-cay_9421b949377b4b69ac4ea6846efcfcc4_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">CÔ BÒ TRÈO CÂY</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>36.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">40.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="VenBien.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/tho-harry-hap-tap_fd64c5f7e91a4b00b353cedfe3aa6f1d_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">THỎ HARRY HẤP TẤP</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>36.100</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">40.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item" href="">
+                                        <a href="2SoPhan.html">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/z4332383625683_07d61f11173bac811_6f6f74526c214c91b8c4ac9eb2eab7c7_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">MỘT LƯỢC SỬ VỀ VẠN VẬT (SÁCH THAM KHẢO)</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>355.500</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">395.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/quansuvanhungvuan_1d6776c557154b0da34a4fcb9c266c44_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">QUÂN SƯ & NHỮNG "VỤ ÁN"</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>67.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">75.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/podcaster---ven-man-hau-truong-cua-nhung-buoc-chan-4.0_5b9d9479467c451da8c10dac40da43a2_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">PODCASTER - VÉN MÀN HẬU TRƯỜNG CỦA NHỮNG BƯỚC CHÂN 4.0</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>108.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">120.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/cam-nang-phong-tranh-benh-truyen-nhiem_3c288e4fd5c447548c22f9b612e4a223_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">15 BÍ KÍP GIÚP TỚ AN TOÀN - CẨM NANG PHÒNG TRÁNH BỆNH TRUYỀN NHIỄM</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>49.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">55.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/khongbaogiothatbai_bia01_1_61603e38c5ef49ec91f540fe1e77d625_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">KHÔNG BAO GIỜ LÀ THẤT BẠI! TẤT CẢ LÀ THỬ THÁCH (TÁI BẢN 2023)</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>187.500</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">208.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/image_195509_1_40323_40666d20bc3e42d097f0887628196910_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">TỦ SÁCH HCM - KỂ TIẾP CHUYỆN BÁC HỒ</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>67.200</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">75.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/8935244887747_dedb525daeac4e0ca23710a8f6d4e0f2_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">KĨ NĂNG VÀNG CHO HỌC SINH TRUNG HỌC - HỌC TẬP ĐÚNG CÁCH</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>54.500</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">60.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/van-hoc-tuoi-hoa---cay-quat-xu-gai_bd3afe6e55ef4d779786039f74b754c3_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">VĂN HỌC TUỔI HOA - CÂY QUẤT XÙ GAI</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>27.000</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">30.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/kamil---cau-be-nhin-moi-thu-bang-tay_9206ddc87c1a41ae956c06f81b8b17cf_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">KAMIL - CẬU BÉ "NHÌN" MỌI THỨ BẰNG TAY</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>49.200</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">55.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/chien-dich-giai-cuu-nhung-vi-sao_d3e4d1a791024c9382e42ca475bfae15_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">CHIẾN DỊCH GIẢI CỨU NHỮNG VÌ SAO</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>72.500</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">80.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+
+                                <div class="grid__column-10-2">
+                                    <!-- Sản phẩm  -->
+                                    <div class="home-product-item">
+                                        <a href="">
+                                            <img class="home-product-item__img" src="https://product.hstatic.net/1000363117/product/cuoc-gap-tinh-yeu_11a0a1a6e509419d81633e03c5ab9daa_medium.jpg" alt="">
+                                            <h4 class="home-product-item__name">CUỘC GẶP TÌNH YÊU</h4>
+                                        </a>
+                                        <div class="home-product-item__price">
+                                            <p class="home-product-item__current-price"><span>72.500</span><sup>đ</sup></p>
+                                            <span class="home-product-item__old-price">80.000<sup>đ</sup></span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-10%</span>
+                                        </div>
+                                        <button class="btn btn-addtocart">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="pagination home-product__pagination">
+                            <li class="pagination-item">
+                                <a href="spmoipage1.html" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-angle-left"></i>
+                                </a>
+                            </li>
+
+                            <li class="pagination-item ">
+                                <a href="spmoipage1.html" class="pagination-item__link">1</a>
+                            </li>
+
+                            <li class="pagination-item ">
+                                <a href="spmoipage2.html" class="pagination-item__link">2</a>
+                            </li>
+
+                            <li class="pagination-item pagination-item--active">
+                                <a href="spmoipage3.html" class="pagination-item__link">3</a>
+                            </li>
+
+                            <!-- <li class="pagination-item">
+                                <a href="spmoipage3.html" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-angle-right"></i>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="cart">
+            <i class="fas fa-times"></i>
+            <h2>Giỏ hàng</h2>
+            <form action="">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Chọn</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <!-- <tr>
+                            <td style="display: flex; align-items: center;"><img style="width: 70px" src="https://product.hstatic.net/1000363117/product/8936071672704_85103de7755547f7995cbf7098e788d5_medium.jpg" alt="">TÔI VẼ</td>
+                            <td><span>80,000đ</span></td>
+                            <td><input style="width: 30px; outline: none;" type="number" value="1" min="1"></td>
+                            <td style="cursor: pointer;" >Xóa</td>
+                        </tr>
+                        <tr>
+                            <td style="display: flex; align-items: center;"><img style="width: 70px" src="https://product.hstatic.net/1000363117/product/tb30-1_7a670519dc344827af0cc77ba6c15afa_master.jpg" alt="">CAN TRƯỜNG BƯỚC TIẾP</td>
+                            <td><span>86,400đ</span></td>
+                            <td><input style="width: 30px; outline: none;" type="number" value="1" min="1"></td>
+                            <td style="cursor: pointer;" >Xóa</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <div style="text-align: right;" class="price-total">
+                    <p style="font-weight: bold;" >Tổng tiền: <span id="tientt">0</span><sup>đ</sup></p>
+                </div>
+                <button><a href="thanhtoan.html">Thanh toán</a></button>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">LIÊN KẾT NHANH</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sách Thiếu Nhi</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sách Văn Học</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trinh Thám</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sách Có Chữ Ký</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Văn Phòng Phẩm</a>
+                            </li>
+                            <li class="footer-item">  
+                                <a href="" class="footer-item__link">Gợi Ý Cho Bạn</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">CÁC BỘ SƯU TẬP</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Bút - Viết</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Dụng Cụ Học Sinh</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sản Phẩm Về Giấy</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Dụng Cụ Văn Phòng</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Dụng Cụ Vẽ</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sản Phẩm Điện Tử</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Văn Phòng Phẩm Khác</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">HỖ TRỢ KHÁCH HÀNG</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Chính sách bảo mật</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hướng dẫn mua hàng</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Phương thức thanh toán</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Phương thức vận chuyển</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Chính sách bảo hành</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Chính sách đổi trả</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Liên hệ hỗ trợ</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hệ thống cửa hàng</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Tin tuyển dụng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

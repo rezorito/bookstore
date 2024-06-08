@@ -1,0 +1,160 @@
+/* USER PAGE */
+
+.user-info-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-info {
+    margin-top: 20px;
+    margin-left: 70px;
+    flex-basis: 60%;
+    border-right: 1px solid #efefef;
+}
+
+.user-avatar-img img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.user-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.user-button:hover {
+    background-color: #0069d9;
+}
+
+.user-avatar {
+    text-align: center;
+    margin-top: 50px;
+    width: 34%;
+}
+
+.user-avatar p {
+    margin: 6px 0;
+    color: #999;
+}
+
+.user-info-label {
+    width: 100px;
+    font-size: 14px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.user-name-textInput {
+    width: 416px;
+    height: 40px;
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+.user-date-input {
+    width: 416px;
+    height: 40px;
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+.user-info-output {
+    font-size: 14px;
+}
+
+.user-info-detail a,
+.product-info-detail a {
+    font-size: 14px;
+    margin-left: 4px;
+    color: #05a;
+    text-decoration: underline;
+}
+
+.user-radio-input {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+}
+
+.user-radio-input-label {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+
+/* ADMIN PAGE */
+
+.product-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 480px;
+    border-top:  1px solid #efefef;
+}
+
+.product-content h2 {
+    text-align: center;
+    color: #666;
+}
+
+.product-display {
+    
+    display: flex;
+}
+
+.product-info {
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.product-info-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-info-detail textarea {
+    width: 416px;
+    resize: none;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.margin-button {
+    margin-right: 12px;
+}
+
+.product-picture {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+}
+
+.product-picture img {
+    width: 150px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+table, th, td {
+    border: 1px solid #ddd; 
+    padding: 8px;
+    text-align: center; 
+    font-size: 14px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
