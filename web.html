@@ -48,7 +48,8 @@
                     </a>
                 </div>
                 <div class="header__search">
-                    <input type="text" class="header__search-input" placeholder="Bạn muốn mua gì?">
+                    <input type="text" class="header__search-input" id="searchInput" placeholder="Bạn muốn mua gì?">
+                    <ul class="suggestionsSearch" id="suggestionsList"></ul>
                     <button class="header__search-btn">
                         Tìm kiếm
                         <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
@@ -63,8 +64,38 @@
                             <i class="header__cart-icon fa-solid fa-cart-shopping"></i>  
                         </button>
                         <span class="header__cart-notice" id="countgiohang">0</span>
+                        <!-- No cart: header__cart-list--no-cart -->
+                        <div class="header__cart-list">
+                            <img src="./assets/img/empty_cart.png" alt="" class="header__cart-no-cart-img">
 
-
+                            <h4 class="header__cart-heading">GIỎ HÀNG CỦA TÔI</h4>
+                            <ul class="header__cart-list-item">
+                                <!-- <li class="header__cart-item">
+                                    <img src="./assets/img/CK1.webp" alt="" class="header__cart-img">
+                                    <div class="header__cart-item-info">
+                                        <div class="header__cart-item-head">
+                                            <a class="header__cart-item-name">Ăn Gì Cho Không Độc Hại - Sách Có Chữ Ký</a>
+                                            <span class="header__cart-item-quantity">Số lượng: <input type="number" value="1" min="1"></span>
+                                            <span class="header__cart-item-price"><span>Giá/sp: </span><span>100.000<span><sup>đ</sup></span>
+                                            
+                                        </div>
+                                        <div class="header__cart-item-body">
+                                            <i class="header__cart-item-remove fa-solid fa-xmark"></i>
+                                        </div>
+                                    </div>
+                                </li> -->
+                            </ul>
+                            <div class="header__cart-footer">
+                                <div class="header__cart-total">
+                                    <span class="header__cart-total-text">TỔNG TIỀN:</span>
+                                    <span class="header__cart-total-price"><span>0</span><sup>đ</sup></span>
+                                </div>
+                                <div class="header__cart-button">
+                                    <button class="btn header__cart-view-cart">XEM GIỎ HÀNG</button>
+                                    <button class="btn btn--primary header__cart-view-cart">THANH TOÁN</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -406,7 +437,7 @@
             
         </div>
 
-        <section class="cart">
+        <!-- <section class="cart">
             <i class="fas fa-times"></i>
             <h2>Giỏ hàng</h2>
             <form action="">
@@ -419,7 +450,7 @@
                             <th>Chọn</th>
                         </tr>
                     </thead>
-                    <tbody> 
+                    <tbody>  -->
                         <!-- <tr>
                             <td style="display: flex; align-items: center;"><img style="width: 70px" src="https://product.hstatic.net/1000363117/product/8936071672704_85103de7755547f7995cbf7098e788d5_medium.jpg" alt="">TÔI VẼ</td>
                             <td><span>80,000đ</span></td>
@@ -432,14 +463,14 @@
                             <td><input style="width: 30px; outline: none;" type="number" value="1" min="1"></td>
                             <td style="cursor: pointer;" >Xóa</td>
                         </tr> -->
-                    </tbody>
+                    <!-- </tbody>
                 </table>
                 <div style="text-align: right;" class="price-total">
                     <p style="font-weight: bold;" >Tổng tiền: <span>0</span><sup>đ</sup></p>
                 </div>
                 <button><a href="test.html">Thanh toán</a></button>
             </form>
-        </section>
+        </section> -->
 
         <footer class="footer">
             <div class="grid">
@@ -553,6 +584,9 @@
         
     </div>
     <script src="./assets/js/testdata.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <!-- <script src="./assets/js/script.js"></script> -->
+    <script src="./assets/js/search.js"></script>
+    <script src="./assets/js/cart.js"></script>
+
 </body>
 </html>
