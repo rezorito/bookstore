@@ -76,6 +76,14 @@
     align-items: center;
 }
 
+.header-centerpay {
+    height: var(--header-center-height);
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: solid  3px #737373 ;
+    margin: 0 130px;
+}
 .header__logo {
     width: 248px;
     padding-left: 30px;
@@ -97,6 +105,16 @@
     display: flex;
     align-items: center;
 }
+.header__name {
+    font-size: 34px !important;
+    font-family: 'Times New Roman', Times, serif;
+}
+.header__divider {
+    width: 2px;
+    height: 40px;
+    background-color: #000; /* Màu của đường gạch */
+    margin: 0 10px; /* Khoảng cách giữa đường gạch và các div */
+}
 
 .header__cart-btn {
     height: 40px;
@@ -109,12 +127,12 @@
 }
 
 
-
 .header__cart {
     font-size: 1.4rem;
     width: 283px;
     height: 40px;
     text-align: center;
+
 }
 
 .header__cart-wrap {
