@@ -76,6 +76,13 @@
     align-items: center;
 }
 
+.header-center-pay {
+    height: var(--header-center-height);
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 130px;
+}
 .header__logo {
     width: 248px;
     padding-left: 30px;
@@ -97,6 +104,16 @@
     display: flex;
     align-items: center;
 }
+.header__name {
+    font-size: 34px !important;
+    font-family: 'Times New Roman', Times, serif;
+}
+.header__divider {
+    width: 2px;
+    height: 40px;
+    background-color: #000; /* Màu của đường gạch */
+    margin: 0 10px; /* Khoảng cách giữa đường gạch và các div */
+}
 
 .header__cart-btn {
     height: 40px;
@@ -109,12 +126,12 @@
 }
 
 
-
 .header__cart {
     font-size: 1.4rem;
     width: 283px;
     height: 40px;
     text-align: center;
+
 }
 
 .header__cart-wrap {
@@ -1070,4 +1087,240 @@ p {
 
 .cart i:hover {
     color: #737373;
+}
+.content2 {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .lgin {
+    display: flex;
+  }
+
+  .lgin p {
+    margin: 0;
+    padding-right: 8px;
+  }
+
+  .lgin a {
+    font-size: 1.2rem;
+  }
+
+  .cus_info {
+    margin: 10px 0;
+  }
+
+  .cus_info .row input {
+    width: 207%;
+    font-size: 1.4rem;
+    padding: 8px;
+  }
+
+  .cus_info .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    justify-content: normal;
+  }
+
+  .cus_info .row label {
+    width: 34%;
+    text-align: right;
+    padding-right: 15px;
+    box-sizing: border-box;
+    font-size: 1.4rem;
+  }
+  .page-source1 {
+    color: #555;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  .shipping1 {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    border: 1px solid #c0bcbc;
+    padding-left: 4px;
+    height: 42px;
+    position: relative;
+  }
+
+  .shipping1 input {
+    margin-right: 4px;
+  }
+
+  .ptthanh_toan1 {
+    border: 1px solid #c0bcbc;
+    font-size: 1.4rem;
+    padding: 4px;
+    height: 42px;
+    align-items: center;
+    display: flex;
+  }
+
+  .ptthanh_toan1 input {
+    margin-right: 4px;
+  }
+
+  .price {
+    position: absolute;
+    right: 8px;
+  }
+
+  .butn__tt:hover {
+    cursor: pointer;
+  }
+
+  .returnpage {
+    font-size: 1.4rem;
+    color: var(--theme-color);
+    transition: background 0.5s;
+    display: flex;
+    align-items: center;
+  }
+
+  .returnpage:hover {
+    color: #67cce7;
+  }
+
+  .pay-info__footer {
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .pay-info__header h1 {
+    font-weight: 400;
+    color: var(--text-color);
+  }
+
+  .coll {
+    width: 100%;
+  }
+
+  .pay-info {
+  }
+  .pay-info__main {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-info {
+    background-color: white;
+    height: auto;
+  }
+  .cart-info__main {
+    margin: 0 44px;
+    padding: 40px 0;
+  }
+
+  .cart-info__item {
+    display: flex;
+    align-items: center;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #c0bcbc;
+    position: relative;
+  }
+
+  .cart-info__item img {
+    width: 70px;
+    border: 1px solid #737373;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+
+  .cart-info__item label {
+    margin-right: 20px;
+    font-size: 1.2rem;
+  }
+
+  .cart-info__item p {
+    position: absolute;
+    right: 0;
+  }
+
+  .discountcode {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    border-bottom: 1px solid #c0bcbc;
+    padding-bottom: 10px;
+  }
+
+  .discountcode input {
+    font-size: 1.4rem;
+    height: 42px;
+    width: 442px;
+    align-items: center;
+    padding-left: 8px;
+  }
+
+  .discountcode button {
+    height: 42px;
+    width: 102px;
+    font-size: 1.4rem;
+    border: none;
+    background-color: var(--theme-color);
+    color: white;
+    border-radius: 4px;
+    transition: background 0.5s;
+  }
+
+  .discountcode button:hover {
+    cursor: pointer;
+    background-color: #47b3d1;
+  }
+
+  .price2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .price2 label {
+    font-size: 1.4rem;
+    color: var(--text-color);
+  }
+
+  .price1 {
+    border-bottom: 1px solid #c0bcbc;
+  }
+
+  .total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .total-price h3 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+
+  .header_notice {
+    position: absolute;
+    padding: 4px 8px;
+    top: -8px;
+    left: 58px;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    border-radius: 30px;
+    background-color: #a3a3a3;
+    color: var(--white-color);
+  }
+  .app__container1 {
+    padding: 10px 130px;
+    background-color: #F3F3F3;
+  }
+  .info {
+    background-color: white;
+  }
+  .pay-info__main > .info,
+.pay-info__main > .shipping,
+.pay-info__main > .ptthanh_toan {
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
 }
