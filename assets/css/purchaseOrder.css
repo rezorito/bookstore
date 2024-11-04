@@ -1,0 +1,118 @@
+.app__container1 {
+    font-size: 18px;
+}
+.header-search {
+    display: flex;
+    align-items: normal;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 140px;
+}
+
+.search-input {
+    width: 500px; 
+    padding: 15px; 
+    font-size: 18px; 
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.search-button {
+    padding: 15px 25px;
+    font-size: 16px;
+    border: none;
+    background-color: #6096B4;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+}
+
+.search-button:hover {
+    background-color: #e64a19;
+}
+.cart-summary{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+}
+/* General styles */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Align the checkbox and product name to the left */
+.cart-table th:nth-child(1),
+.cart-table td:nth-child(1),
+.cart-table th:nth-child(2),
+.cart-table td:nth-child(2) {
+    text-align: left;
+}
+
+/* Align the other columns to the right */
+.cart-table th:nth-child(3),
+.cart-table td:nth-child(3),
+.cart-table th:nth-child(4),
+.cart-table td:nth-child(4),
+.cart-table th:nth-child(5),
+.cart-table td:nth-child(5),
+.cart-table th:nth-child(6),
+.cart-table td:nth-child(6) {
+    text-align: right;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item__image img {
+    width: 100px; 
+    height: 130px; 
+    margin-right: 10px; 
+}
+
+.cart-item__details {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item__name {
+    text-align: left;
+    margin-left: 10px;
+}
+.cart-summary {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
+.cart-summary__total {
+    margin-right: 10px; 
+}
+
+.cart-summary__checkout-btn {
+    padding: 12px 20px; 
+    font-size: 16px; 
+    background-color: #6096B4; 
+    color: #fff; 
+    border: none; 
+    cursor: pointer;
+    border-radius: 5px; 
+}
+
+.cart-summary__checkout-btn:hover {
+    background-color: #333;
+}
+
+.countsp {
+    width: 80px;
+}

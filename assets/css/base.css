@@ -21,6 +21,11 @@ html {
     line-height: 1.6rem;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+    height: 100%;
+}
+
+.maxHeight {
+    height: 100%;
 }
 
 /* Responsive */
@@ -198,3 +203,4 @@ html {
     text-align: center;
     border-radius: 2px;
 }
+

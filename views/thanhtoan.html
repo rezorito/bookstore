@@ -1,203 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thanh toán</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    />
-    <link rel="stylesheet" href="../assets/css/base.css" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link
-      rel="stylesheet"
-      href="../assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="../assets/js/main.js" defer></script>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header-top">
-        <div class="grid">
-          <nav class="header__navbar">
-            <ul class="header__navbar-list">
-              <li class="header__navbar-item header__navbar-item--separate">
-                <a href="" class="header__navbar-link">Hệ Thống Cửa Hàng</a>
-              </li>
-              <li class="header__navbar-item">
-                <a href="LienHe.html" class="header__navbar-title"
-                  >Liên Hệ Hỗ Trợ</a
-                >
-                <a href="" class="header__navvar-icon-link">
-                  <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="" class="header__navvar-icon-link">
-                  <i class="fa-brands fa-instagram"></i>
-                </a>
-              </li>
-            </ul>
 
-            <ul class="header__navbar-list">
-              <a
-                href="DangNhap.html"
-                class="header__navbar-title header__navbar-item header__navbar-item--separate"
-                >Đăng nhập</a
-              >
-              <a
-                href="DangKy.html"
-                class="header__navbar-title header__navbar-item"
-                >Đăng ký</a
-              >
-            </ul>
-          </nav>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh toán</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-top">
+      <div class="grid">
+        <nav class="header__navbar">
+          <ul class="header__navbar-list">
+            <li class="header__navbar-item header__navbar-item--separate">
+              <a href="" class="header__navbar-link">Hệ Thống Cửa Hàng</a>
+            </li>
+            <li class="header__navbar-item">
+              <a href="LienHe.html" class="header__navbar-title">Liên Hệ Hỗ Trợ</a>
+              <a href="" class="header__navvar-icon-link">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a href="" class="header__navvar-icon-link">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="header__navbar-list" id="UnLoginUser">
+            <a href="DangNhap.html" class="header__navbar-title header__navbar-item header__navbar-item--separate">Đăng
+              nhập</a>
+            <a href="DangKy.html" class="header__navbar-title header__navbar-item">Đăng ký</a>
+          </ul>
+          <ul class="header__navbar-list" id="LoginUser">
+            <div class="user-login">
+              <img src="./assets/img/avatar.png" alt="" class="avatar-login">
+              <span class="user-name" id="UserName_LG">user1</span>
+              <div class="user-login-list">
+                <ul class="user-login-list-item">
+                  <li><a class="user-login-item" href="Admin.html">Tài Khoản Của Tôi</a></li>
+                  <li><a class="user-login-item" href="purchaseOrder.html">Đơn Mua</a></li>
+                  <li><a class="user-login-item" href="" id="logOut">Đăng Xuất</a></li>
+              </ul>
+              </div>
+
+            </div>
+          </ul>
+        </nav>
       </div>
-      <!-- Header with search -->
-      <div class="header-center-pay">
-        <div class="header__logo">
-          <a href="home.html">
-            <img class="header__logo-img" src="../assets/img/logo.png" alt="" />
-          </a>
-        </div>
-        <div class="header__divider"></div>
-        <div class="header__name">Thanh toán</div>
+    </div>
+    <!-- Header with search -->
+    <div class="header-center-pay">
+      <div class="header__logo">
+        <a href="home.html">
+          <img class="header__logo-img" src="../assets/img/logo.png" alt="" />
+        </a>
       </div>
-    </header>
-    <div class="app__container1">
-      <div class="content2">
-        <div class="coll">
-          <div class="pay-info">
-            <div class="pay-info__main">
-              <div class="info">
-                <h2>Thông tin thanh toán</h2>
-                <div class="cus_info">
-                  <div class="row">
-                    <label for="">Họ và tên</label>
-                    <div>
-                      <input type="text" placeholder="Họ và tên" />
-                    </div>
+      <div class="header__divider"></div>
+      <div class="header__name">Thanh toán</div>
+    </div>
+  </header>
+  <div class="app__container1">
+    <div class="content2">
+      <div class="coll">
+        <div class="pay-info">
+          <div class="pay-info__main">
+            <div class="info">
+              <h2>Thông tin thanh toán</h2>
+              <div class="cus_info">
+                <div class="row">
+                  <label for="">Họ và tên</label>
+                  <div>
+                    <input type="text" placeholder="Họ và tên" />
                   </div>
-                  <div class="row">
-                    <label for="">Email</label>
-                    <div>
-                      <input type="text" placeholder="email" />
-                    </div>
+                </div>
+                <div class="row">
+                  <label for="">Email</label>
+                  <div>
+                    <input type="text" placeholder="email" />
                   </div>
-                  <div class="row">
-                    <label for="">Số điện thoại</label>
-                    <div>
-                      <input type="text" placeholder="Điện thoại" />
-                    </div>
+                </div>
+                <div class="row">
+                  <label for="">Số điện thoại</label>
+                  <div>
+                    <input type="text" placeholder="Điện thoại" />
                   </div>
-                  <div class="row">
-                    <label for="">Địa chỉ</label>
-                    <div>
-                      <input type="text" placeholder="Địa chỉ" />
-                    </div>
+                </div>
+                <div class="row">
+                  <label for="">Địa chỉ</label>
+                  <div>
+                    <input type="text" placeholder="Địa chỉ" />
                   </div>
                 </div>
               </div>
-              <div class="shipping">
-                <h2 style="font-weight: 500">Phương thức vận chuyển</h2>
-                <div class="shipping1">
-                  <input
-                    name="ship"
-                    type="radio"
-                    value="Giao hàng nhanh"
-                    id="ghn"
-                    onchange="phiship(this)"
-                  />Giao hàng nhanh
-                  <div class="price">
-                    <p><span>35.000</span><sup>đ</sup></p>
-                  </div>
-                </div>
-                <div class="shipping1">
-                  <input
-                    name="ship"
-                    type="radio"
-                    value="Giao hàng nhanh"
-                    id="ghht"
-                    onchange="phiship(this)"
-                  />Giao hàng hỏa tốc
-                  <div class="price">
-                    <p><span>50.000</span><sup>đ</sup></p>
-                  </div>
+            </div>
+            <div class="shipping">
+              <h2 style="font-weight: 500">Phương thức vận chuyển</h2>
+              <div class="shipping1">
+                <input name="ship" type="radio" value="Giao hàng nhanh" id="ghn" checked />Giao
+                hàng nhanh
+                <div class="price">
+                  <p><span>35</span>.000<sup>đ</sup></p>
                 </div>
               </div>
-              <div class="ptthanh_toan">
-                <h2 style="font-weight: 500">Phương thức thanh toán</h2>
-                <div class="ptthanh_toan1">
-                  <input
-                    name="pay"
-                    type="radio"
-                    value="Thanh toán khi nhận hàng"
-                  />Thanh toán khi nhận hàng (COD)
+              <div class="shipping1">
+                <input name="ship" type="radio" value="Giao hàng nhanh" id="ghht" />Giao hàng
+                hỏa tốc
+                <div class="price">
+                  <p><span>50</span>.000<sup>đ</sup></p>
                 </div>
-                <div class="ptthanh_toan1">
-                  <input
-                    name="pay"
-                    type="radio"
-                    value="Chuyển khoản qua ngân hàng"
-                  />Chuyển khoản qua ngân hàng
-                </div>
-                <div class="ptthanh_toan1">
-                  <input
-                    name="pay"
-                    type="radio"
-                    value="Thẻ qua cổng VNPAY"
-                  />Thẻ ATM/Visa/Master/JCB/QR Pay qua cổng VNPAY
-                </div>
+              </div>
+            </div>
+            <div class="ptthanh_toan">
+              <h2 style="font-weight: 500">Phương thức thanh toán</h2>
+              <div class="ptthanh_toan1">
+                <input name="pay" type="radio" value="Thanh toán khi nhận hàng" id="pay_cod" checked />Thanh toán khi
+                nhận hàng (COD)
+              </div>
+              <div class="ptthanh_toan1">
+                <input name="pay" type="radio" value="Chuyển khoản qua ngân hàng" id="pay_bank" />Chuyển khoản qua ngân
+                hàng
               </div>
             </div>
           </div>
         </div>
-        <div class="coll">
-          <div class="cart-info">
-            <div class="cart-info__main" id="chitiettt">
-              <div class="cart-info__item">
-                <img
-                  src="https://product.hstatic.net/1000363117/product/8935280913998_30f812bcfd29457c8dd8f1d35b288a7a_medium.jpg"
-                  alt=""
-                />
-                <label for=""
-                  >NGƯỜI CHỮA LÀNH - SỨC MẠNH LAY ĐỘNG TRÁI TIM</label
-                >
-                <span class="header_notice">1</span>
-                <p><span>160.000</span><sup>đ</sup></p>
+      </div>
+      <div class="coll">
+        <div class="cart-info">
+          <div class="cart-info__main" id="TTSPPay">
+            
+          </div>
+          <div class="cart-info__main">
+            <div class="discountcode">
+              <input type="text" placeholder="Mã giảm giá" />
+              <button>Áp dụng</button>
+            </div>
+            <div class="price1">
+              <div class="price2">
+                <label>Tạm tính</label>
+                <p><span id="price-sp">160</span>.000<sup>đ</sup></p>
               </div>
-              <div class="discountcode">
-                <input type="text" placeholder="Mã giảm giá" />
-                <button>Áp dụng</button>
-              </div>
-              <div class="price1">
-                <div class="price2">
-                  <label>Tạm tính</label>
-                  <p><span>160.000</span><sup>đ</sup></p>
-                </div>
-                <div class="price2">
-                  <label>Phí ship</label>
-                  <p><span>35.000</span><sup>đ</sup></p>
-                </div>
-              </div>
-              <div class="total-price">
-                <h3>Tổng tiền</h3>
-                <p><span>195.000</span><sup>đ</sup></p>
+              <div class="price2">
+                <label>Phí ship</label>
+                <p><span id="price-ship">35</span>.000<sup>đ</sup></p>
               </div>
             </div>
+            <div class="total-price">
+              <h3>Tổng tiền</h3>
+              <p><span id="price-total">2</span>.000<sup>đ</sup></p>
+            </div>
           </div>
-          <div class="pay-info__footer">
-            <a class="returnpage" href="web.html">Quay lại mua sắm</a>
-            <a class="butn butn__tt">Thanh toán</a>
-          </div>
+        </div>
+        <div class="pay-info__footer">
+          <a class="returnpage" href="web.html">Quay lại mua sắm</a>
+          <a class="butn butn__tt" id="open-popupqr-btn">Thanh toán</a>
         </div>
       </div>
     </div>
-    <script src="./assets/js/script.js" defer></script>
-  </body>
+  </div>
+  <!-- <div class="popupqr" id="popupqr">
+    <div class="popupqr-content">
+      <span class="closeqr" id="close-popupqr-btn">&times;</span>
+      <img class="qrcodeimg" src="">
+    </div>  
+  </div> -->
+  <div id="popupqr" class="popupqr">
+    <div class="popupqr-content">
+      <span class="close-btn" id="close-popupqr-btn"">&times;</span>
+      <div class="popup-body">
+        <img class="qrcodeimg"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE48jfGX5hfbOZ3jMkof42sxcMiTCSX_xr-Q&s"
+        />
+        <div class="bank-info">
+          <img
+            src="https://news.khangz.com/wp-content/uploads/2023/04/CACH-LAM-THE-NGAN-HANG-MB-BANK-ONLINE-1.jpg"
+            alt="Bank Logo"
+            class="bank-logo"
+          />
+          <p>221003160903</p>
+          <p>PHAM NGOC NGHIA</p>
+          <p>Tổng tiền : <span id="TotalPayment"></span>.000đ</p>
+          <p>Trong nội dung (bắt buộc *) :  <span id="codext"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body-overlay" id="body-overlay"></div>
+  <script src="./assets/js/script.js" defer></script>
+  <script src="../sqlserver/qrcode.js"></script>
+  <script src="../sqlserver/checklogin.js"></script>
+  <script src="../sqlserver/thanhtoan.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+</body>
 </html>

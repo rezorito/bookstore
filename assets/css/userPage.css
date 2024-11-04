@@ -135,12 +135,14 @@
 
 .product-picture {
     width: 150px;
-    height: 150px;
+    height: 200px;
     border: 1px solid #ccc;
+    margin-right: 15px;
 }
 
 .product-picture img {
-    width: 150px;
+    width: 100%;
+    height: 200px;
 }
 
 table {

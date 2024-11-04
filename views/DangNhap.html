@@ -21,7 +21,7 @@
                     <nav class="header__navbar">
                         <ul class="header__navbar-list">
                             <li class="header__navbar-item header__navbar-item--separate">
-                                <a href="" class="header__navbar-link">Hệ Thống Cửa Hàng</a>
+                                <a href="home.html" class="header__navbar-link">Hệ Thống Cửa Hàng</a>
                             </li>
                             <li class="header__navbar-item">
                                 <span class="header__navbar-title">Liên Hệ Hỗ Trợ</span>
@@ -35,8 +35,8 @@
                         </ul>
         
                         <ul class="header__navbar-list">
-                            <li class="header__navbar-item header__navbar-item--separate">Đăng nhập</li>
-                            <li class="header__navbar-item">Đăng ký</li>
+                            <a href="DangNhap.html" class="header__navbar-title header__navbar-item header__navbar-item--separate">Đăng nhập</a>
+                            <a href="DangKy.html" class="header__navbar-title header__navbar-item">Đăng ký</a>
                         </ul>
                     </nav>
                 </div>
@@ -44,13 +44,13 @@
             <!-- Header with search -->
             <div class="header-center">
                 <div class="header__logo">
-                    <a href="web.html">
-                        <img class="header__logo-img" src="./assets/img/logo.png" alt="">
-
+                    <a href="home.html">
+                        <img class="header__logo-img" src="../assets/img/logo.png" alt="">
                     </a>
                 </div>
                 <div class="header__search">
-                    <input type="text" class="header__search-input" placeholder="Bạn muốn mua gì?">
+                    <input type="text" class="header__search-input" id="searchInput" placeholder="Bạn muốn mua gì?">
+                    <ul class="suggestionsSearch" id="suggestionsList"></ul>
                     <button class="header__search-btn">
                         Tìm kiếm
                         <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
@@ -117,23 +117,23 @@
 
                 <ul class="category-list">
                     <li class="category-item">
-                        <a href="#" class="category-item__link">Sách Thiếu Nhi</a>
+                        <a href="TLThieuNhi.html" class="category-item__link" id="TN">Sách Thiếu Nhi</a>
                     </li>
 
                     <li class="category-item">
-                        <a href="#" class="category-item__link">Sách Văn Học</a>
+                        <a href="TLVanHoc.html" class="category-item__link" id="VH">Sách Văn Học</a>
                     </li>
 
                     <li class="category-item">
-                        <a href="#" class="category-item__link">Trinh Thám</a>
+                        <a href="TLTrinhTham.html" class="category-item__link" id="TT">Trinh Thám</a>
                     </li>
 
                     <li class="category-item">
-                        <a href="#" class="category-item__link">Sách Có Chữ Ký</a>
+                        <a href="TLChuKy.html" class="category-item__link" id="CK">Sách Có Chữ Ký</a>
                     </li>
 
                     <li class="category-item">
-                        <a href="#" class="category-item__link">Văn Phòng Phẩm</a>
+                        <a href="TLVanPP.html" class="category-item__link" id="VPP">Văn Phòng Phẩm</a>
                     </li>
 
                     
@@ -148,10 +148,10 @@
             <div class="input-wrap">
                 <h1 class="page-titleDK">ĐĂNG NHẬP</h1>
                 <input type="text" class="customer-info__input1" id="username" placeholder="Email">
-                <input type="text" class="customer-info__input1" id="password" placeholder="Mật khẩu">
+                <input type="password" class="customer-info__input1" id="password" placeholder="Mật khẩu">
                 <a class="butn" id="login">Đăng nhập</a>
-                <a href="" class="butn btn_return">Trở về</a>
-                <a href="" class="butn btn_return">Quên mật khẩu?</a>
+                <a class="butn btn_return" id="checklogin">Trở về</a>
+                <a class="butn btn_return">Quên mật khẩu?</a>
             </div>
         </div>
 
@@ -162,22 +162,22 @@
                         <h3 class="footer__heading">LIÊN KẾT NHANH</h3>
                         <ul class="footer-list">
                             <li class="footer-item">
-                                <a href="" class="footer-item__link">Sách Thiếu Nhi</a>
+                                <a href="TLThieuNhi.html" class="footer-item__link">Sách Thiếu Nhi</a>
                             </li>
                             <li class="footer-item">
-                                <a href="" class="footer-item__link">Sách Văn Học</a>
+                                <a href="TLVanHoc.html" class="footer-item__link">Sách Văn Học</a>
                             </li>
                             <li class="footer-item">
-                                <a href="" class="footer-item__link">Trinh Thám</a>
+                                <a href="TLTrinhTham.html" class="footer-item__link">Trinh Thám</a>
                             </li>
                             <li class="footer-item">
-                                <a href="" class="footer-item__link">Sách Có Chữ Ký</a>
+                                <a href="TLChuKy.html" class="footer-item__link">Sách Có Chữ Ký</a>
                             </li>
                             <li class="footer-item">
-                                <a href="" class="footer-item__link">Văn Phòng Phẩm</a>
+                                <a href="TLVanPP.html" class="footer-item__link">Văn Phòng Phẩm</a>
                             </li>
                             <li class="footer-item">  
-                                <a href="" class="footer-item__link">Gợi Ý Cho Bạn</a>
+                                <a href="home.html" class="footer-item__link">Gợi Ý Cho Bạn</a>
                             </li>
                         </ul>
                     </div>
@@ -266,5 +266,7 @@
         </footer>
     </div>
     <script src="../sqlserver/login.js"></script>
+    <script src="../sqlserver/checklogin.js"></script>
+    <script src="../sqlserver/controler_search.js"></script>
 </body>
 </html>

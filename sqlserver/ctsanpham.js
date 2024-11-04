@@ -1,14 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var linkctsp = document.querySelectorAll("[id^='linkCTSP_']");
-    linkctsp.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            var linkID = this.getAttribute('id');
-            var bookID = linkID.substring(9);
-            fetchDataCTSPFromServer(bookID);
-        });
-    });
-});
 
 function fetchDataCTSPFromServer(bookID) {
     fetch('http://localhost:5000/ctsp?id=' + bookID)
@@ -25,6 +14,7 @@ function fetchDataCTSPFromServer(bookID) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    checkuserlogin();
     var bookCTData = JSON.parse(sessionStorage.getItem('bookData'));
     if (bookCTData) {
         console.log(bookCTData);
@@ -44,7 +34,7 @@ function createBookCTElement(bookCTData) {
     firstColumnDiv.classList.add('col-2');
 
     var image = document.createElement('img');
-    image.src = bookCTData.Image;
+    image.src = bookCTData.BookImage;
     image.width = '100%';
     image.id = 'ProductImg';
 
@@ -55,11 +45,11 @@ function createBookCTElement(bookCTData) {
     productDiv.classList.add('CTProduct');
 
     var title = document.createElement('h1');
-    title.textContent = bookCTData.Name;
+    title.textContent = bookCTData.BookName;
 
     var priceParagraph = document.createElement('p');
     var priceSpan = document.createElement('span');
-    priceSpan.textContent = bookCTData.Price;
+    priceSpan.textContent = bookCTData.BookPrice;
     priceParagraph.appendChild(priceSpan);
     priceParagraph.innerHTML += '.000 đ';
 
@@ -71,9 +61,9 @@ function createBookCTElement(bookCTData) {
     var addToCartButton = document.createElement('button');
     addToCartButton.classList.add('butn');
     addToCartButton.textContent = 'Thêm Vào Giỏ Hàng';
-    addToCartButton.onclick = function () {
-        themvaogiohang(this);
-    };
+    addToCartButton.addEventListener('click', async function(e) {
+        AddCart(bookCTData);
+    })
 
     var descriptionTitle = document.createElement('h3');
     descriptionTitle.textContent = 'Mô Tả';
@@ -82,7 +72,7 @@ function createBookCTElement(bookCTData) {
     descriptionTitle.appendChild(descriptionIcon);
 
     var descriptionParagraph = document.createElement('p');
-    descriptionParagraph.textContent = bookCTData.Content;
+    descriptionParagraph.textContent = bookCTData.BookContent;
 
     // Append các phần tử vào nhau theo cấu trúc
     firstColumnDiv.appendChild(image);

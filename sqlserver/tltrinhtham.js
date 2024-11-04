@@ -1,44 +1,23 @@
-//Lấy dữ liệu sách categoryData
 document.addEventListener("DOMContentLoaded", function () {
-    var categoryLinks = document.querySelectorAll('.category-item__link');
-    categoryLinks.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
-            var categoryId = this.getAttribute('id'); // Lấy ID của liên kết được nhấp
-            fetchDataFromServer(categoryId); // Gửi yêu cầu đến server
-        });
-    });
+    fetchDataTTFromServer();
+    checkuserlogin();
 });
 
-function fetchDataFromServer(categoryId) {
-    fetch('http://localhost:5000/cate?id=' + categoryId)
+function fetchDataTTFromServer() {
+    fetch('http://localhost:5000/cateTT')
         .then(response => response.json())
         .then(data => {
             if (Object.keys(data).length === 0) {
                 console.log("Dữ liệu rỗng!");
             } else {
                 console.log(data);
-                // Chuyển đến trang mới sau khi nhận được dữ liệu và xử lý hoàn thành
-                window.location.href = '../views/TheLoai.html';
-                // Lưu dữ liệu vào session storage để sử dụng trong trang mới
-                sessionStorage.setItem('categoryData', JSON.stringify(data));
+                sessionStorage.setItem('categoryTTData', JSON.stringify(data));
+                displayProducts(currentPage)
+                setupPagination()
             }
         })
         .catch(error => console.error('Lỗi:', error));
 }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     var categoryData = JSON.parse(sessionStorage.getItem('categoryData'));
-//     if (categoryData) {
-//         console.log(categoryData);
-//         var container = document.getElementById('dssp');
-//         container.innerHTML = ''
-//         categoryData.forEach(function (book) {
-//             var bookElement = createBookElement(book);
-//             container.appendChild(bookElement);
-//         });
-//     }
-// });
 
 //Sắp xếp theo giá
 document.addEventListener("DOMContentLoaded", function () {
@@ -48,32 +27,32 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
             var slinkID = this.getAttribute('id'); // Lấy ID của liên kết được nhấp
             if (slinkID === "ASC") {
-                var SortData = JSON.parse(sessionStorage.getItem('categoryData'));
+                var SortData = JSON.parse(sessionStorage.getItem('categoryTTData'));
                 if (SortData) {
                     var container = document.getElementById('dssp');
                     container.innerHTML = ''
                     SortData.sort(function (a, b) {
                         return a.Price - b.Price;
                     });
+                    sessionStorage.setItem('categoryTTData', JSON.stringify(SortData));
+                    SortData = JSON.parse(sessionStorage.getItem('categoryTTData'));
                     console.log(SortData)
-                    SortData.forEach(function (book) {
-                        var bookElement = createBookElement(book);
-                        container.appendChild(bookElement);
-                    });
+                    displayProducts(currentPage)
+                    setupPagination()
                 }
             } else {
-                var SortData = JSON.parse(sessionStorage.getItem('categoryData'));
+                var SortData = JSON.parse(sessionStorage.getItem('categoryTTData'));
                 if (SortData) {
                     var container = document.getElementById('dssp');
                     container.innerHTML = ''
                     SortData.sort(function (a, b) {
                         return b.Price - a.Price;
                     });
+                    sessionStorage.setItem('categoryTTData', JSON.stringify(SortData));
+                    SortData = JSON.parse(sessionStorage.getItem('categoryTTData'));
                     console.log(SortData)
-                    SortData.forEach(function (book) {
-                        var bookElement = createBookElement(book);
-                        container.appendChild(bookElement);
-                    });
+                    displayProducts(currentPage)
+                    setupPagination()
                 }
             }
         });
@@ -89,37 +68,46 @@ function createBookElement(book) {
 
     var link = document.createElement('a');
     link.href = "#";
-    link.id = "linkCTSP_" + book.ID;
+    link.id = "linkCTSP_" + book.BookID;
 
     var image = document.createElement('img');
     image.classList.add('home-product-item__img');
-    image.src = book.Image;
+    image.src = book.BookImage;
     image.alt = "";
 
     var title = document.createElement('h4');
     title.classList.add('home-product-item__name');
-    title.textContent = book.Name;
+    title.textContent = book.BookName;
 
     var priceDiv = document.createElement('div');
     priceDiv.classList.add('home-product-item__price');
 
     var currentPrice = document.createElement('p');
     currentPrice.classList.add('home-product-item__current-price');
-    currentPrice.innerHTML = '<span>' + book.Price + '.000' + '</span><sup>đ</sup>';
+    currentPrice.innerHTML = '<span>' + book.BookPrice + '.000' + '</span><sup>đ</sup>';
+
+    var oldPriceTotal = Math.floor(book.BookPrice + book.BookPrice * book.BookSale / 100);
+    var oldPrice = document.createElement('span');
+    oldPrice.classList.add('home-product-item__old-price');
+    oldPrice.innerHTML = oldPriceTotal + '.000' + '<sup>đ</sup>';
 
     var saleOffDiv = document.createElement('div');
     saleOffDiv.classList.add('home-product-item__sale-off');
 
     var saleOffPercent = document.createElement('span');
     saleOffPercent.classList.add('home-product-item__sale-off-percent');
-    saleOffPercent.textContent = '-' + book.Sale + ' %';
+    saleOffPercent.textContent = '-' + book.BookSale + ' %';
 
     var button = document.createElement('button');
     button.classList.add('btn', 'btn-addtocart');
     button.textContent = 'Thêm vào giỏ hàng';
+    button.addEventListener('click', function(e) {
+        AddCart(book);
+    })
 
     saleOffDiv.appendChild(saleOffPercent);
     priceDiv.appendChild(currentPrice);
+    priceDiv.appendChild(oldPrice);
 
     productDiv.appendChild(link);
     link.appendChild(image);
@@ -138,11 +126,11 @@ const itemsPerPage = 15;
 let currentPage = 1;
 
 function displayProducts(page) {
-    var categoryData = JSON.parse(sessionStorage.getItem('categoryData'));
-    if (categoryData) {
+    var categoryTTData = JSON.parse(sessionStorage.getItem('categoryTTData'));
+    if (categoryTTData) {
         const startIndex = (page - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
-        const paginatedProducts = categoryData.slice(startIndex, endIndex);
+        const paginatedProducts = categoryTTData.slice(startIndex, endIndex);
         var container = document.getElementById('dssp');
         container.innerHTML = ''
         console.log(paginatedProducts);
@@ -151,11 +139,22 @@ function displayProducts(page) {
             container.appendChild(bookElement);
         });
     }
+
+    var linkctsp = document.querySelectorAll("[id^='linkCTSP_']");
+    linkctsp.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            var linkID = this.getAttribute('id');
+            var bookID = linkID.substring(9);
+            fetchDataCTSPFromServer(bookID);
+        });
+    });
 }
 
 function setupPagination() {
-    var categoryData = JSON.parse(sessionStorage.getItem('categoryData'));
-    const totalPages = Math.ceil(categoryData.length / itemsPerPage);
+    var categoryTTData = JSON.parse(sessionStorage.getItem('categoryTTData'));
+    console.log(categoryTTData)
+    const totalPages = Math.ceil(categoryTTData.length / itemsPerPage);
     const pagination = document.getElementById('pagination');
     pagination.innerHTML = '';
 
@@ -193,7 +192,7 @@ function setupPagination() {
             page.classList.add('pagination-item--active');
         }
         pageLink.addEventListener('click', () => {
-            
+
             currentPage = i;
             displayProducts(currentPage);
             setupPagination();
@@ -224,8 +223,3 @@ function setupPagination() {
     }
     pagination.appendChild(next);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    displayProducts(currentPage)
-    setupPagination()
-});

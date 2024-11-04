@@ -34,7 +34,7 @@
                         </ul>
         
                         <ul class="header__navbar-list">
-                            <a href="DangNhap.html" class="header__navbar-title header__navbar-item header__navbar-item--separate">Đăng nhập</a>
+                            <a href="DangNhap.html" class="header__navbar-title header__navbar-item header__navbar-item--separate" id="test">Đăng nhập</a>
                             <a href="DangKy.html" class="header__navbar-title header__navbar-item">Đăng ký</a>
                         </ul>
                     </nav>
@@ -50,7 +50,7 @@
                 <div class="header__search">
                     <input type="text" class="header__search-input" id="searchInput" placeholder="Bạn muốn mua gì?">
                     <ul class="suggestionsSearch" id="suggestionsList"></ul>
-                    <button class="header__search-btn">
+                    <button class="header__search-btn" id="btnil">
                         Tìm kiếm
                         <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -66,9 +66,8 @@
                         <span class="header__cart-notice" id="countgiohang">0</span>
                         <!-- No cart: header__cart-list--no-cart -->
                         <div class="header__cart-list">
-                            <img src="./assets/img/empty_cart.png" alt="" class="header__cart-no-cart-img">
-
                             <h4 class="header__cart-heading">GIỎ HÀNG CỦA TÔI</h4>
+                            <img src="./assets/img/empty_cart.png" alt="" class="header__cart-no-cart-img" id="emptyCard">
                             <ul class="header__cart-list-item">
                                 <!-- <li class="header__cart-item">
                                     <img src="./assets/img/CK1.webp" alt="" class="header__cart-img">
@@ -583,10 +582,24 @@
         </footer>
         
     </div>
-    <script src="./assets/js/testdata.js"></script>
-    <!-- <script src="./assets/js/script.js"></script> -->
+    <!-- <script src="./assets/js/testdata.js"></script>
+    <script src="./assets/js/script.js"></script>
     <script src="./assets/js/search.js"></script>
-    <script src="./assets/js/cart.js"></script>
-
+    <script src="./assets/js/cart.js"></script> -->
+    <script>
+        document.getElementById('btnil').addEventListener('click', function(e) {
+            var test = generateRandomString();
+            console.log(test)
+        })
+        function generateRandomString() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            const charactersLength = characters.length;
+            for (let i = 0; i < 7; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result
+        }   
+    </script>
 </body>
 </html>
