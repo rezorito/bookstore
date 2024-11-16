@@ -1,15 +1,12 @@
 :root {
-    
     --white-color: #fff;
     --gray-color: #a09a99;
     --black-color: #000;
     --text-color: #333;
-    --theme-color: #6096B4;
+    --theme-color: #6096b4;
 
-    --header-height: 136px;
-    --navbar-height: 28px;
-    --header-center-height: calc(var(--header-height) - var(--navbar-height));
-
+    --header-height: 170px;
+    --header-center-height: 108px;
 }
 
 * {
@@ -19,7 +16,7 @@
 html {
     font-size: 62.5%;
     line-height: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     box-sizing: border-box;
     height: 100%;
 }
@@ -30,9 +27,10 @@ html {
 
 /* Responsive */
 .grid {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
+    width: 1210px;
+    max-width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .grid__full-width {
@@ -53,19 +51,18 @@ html {
     width: 16.6667%;
 }
 
-.grid__column-10-2 {   /*grid__column-2-4*/
+.grid__column-10-2 {
+    /*grid__column-2-4*/
     padding-left: 5px;
     padding-right: 5px;
     width: 20%;
 }
-
 
 .grid__column-10 {
     padding-left: 5px;
     padding-right: 5px;
     width: 83.3334%;
 }
-
 
 /* button style */
 
@@ -137,10 +134,16 @@ html {
     color: rgb(131, 131, 131);
     position: relative;
     top: 1px;
+    transform: rotate(-90deg);
+    transition: 0.25s;
 }
 
 .select-input:hover .select-input__list {
     display: block;
+}
+
+.select-input:hover .select-input__icon {
+    transform: rotate(360deg);
 }
 
 .select-input__list {
@@ -148,13 +151,24 @@ html {
     left: 0;
     right: 0;
     top: 16px;
+    padding: 0;
     border-radius: 2px;
     background-color: var(--white-color);
     z-index: 1;
-    padding: 8px 16px;
     list-style: none;
     box-shadow: 1px 1px 1px #dddbdb;
     display: none;
+}
+
+.select-input__list::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    cursor: pointer;
 }
 
 .select-input__link {
@@ -162,11 +176,13 @@ html {
     color: var(--text-color);
     text-decoration: none;
     display: block;
-    padding: 4px 0;
+    padding: 8px 10px;
+    transition: 0.25s;
 }
 
 .select-input__link:hover {
     color: var(--theme-color);
+    background: #efefef;
 }
 
 /* PAGINATION */
@@ -203,4 +219,3 @@ html {
     text-align: center;
     border-radius: 2px;
 }
-
