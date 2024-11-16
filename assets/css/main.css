@@ -576,6 +576,10 @@
     width: 100%;
 }
 
+.banner__img2 {
+    margin-bottom: 5px;
+}
+
 .banner__img2 img {
     height: auto;
     object-fit: cover;
@@ -702,6 +706,10 @@
 /* FOOTER */
 
 .footer {
+    /* position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; */
     padding-top: 18px;
     background-color: #eaeaea;
 }
@@ -741,20 +749,10 @@
 
 /* SP BÁN CHẠY */
 
-.page-source {
-    color: #555;
-    font-weight: 500;
-    margin: 8px 0 12px 48px;
-    font-size: 1.2rem;
-}
-
-.home-page {
-    color: #555;
-    text-decoration: none;
-}
-
-.home-page:hover {
-    color: var(--theme-color);
+.cate-title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin: 0;
 }
 
 .home-filter__label {
@@ -783,7 +781,9 @@
 .home-filter2 {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 8px 8px;
+    margin-bottom: 10px;
     border-radius: 2px;
     background-color: rgb(0, 0, 0, 0.06);
 }

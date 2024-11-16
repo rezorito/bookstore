@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bookstore</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+        <link rel="stylesheet" href="../assets/css/base.css" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/product-details.css" />
+        <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <script src="../assets/js/main.js" defer></script>
+    </head>
+
+    <body>
+        <div class="app">
+            <header class="header">
+                <div class="header-top">
+                    <div class="grid">
+                        <nav class="header__navbar">
+                            <ul class="header__navbar-list">
+                                <li class="header__navbar-item header__navbar-item--separate">
+                                    <a href="home.html" class="header__navbar-link">Hệ Thống Cửa Hàng</a>
+                                </li>
+                                <li class="header__navbar-item">
+                                    <a href="LienHe.html" class="header__navbar-title">Liên Hệ Hỗ Trợ</a>
+                                    <a href="" class="header__navvar-icon-link">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
+                                    <a href="" class="header__navvar-icon-link">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="header__navbar-list" id="UnLoginUser">
+                                <a
+                                    href="DangNhap.html"
+                                    class="header__navbar-title header__navbar-item header__navbar-item--separate"
+                                    >Đăng nhập</a
+                                >
+                                <a href="DangKy.html" class="header__navbar-title header__navbar-item">Đăng ký</a>
+                            </ul>
+                            <ul class="header__navbar-list" id="LoginUser">
+                                <div class="user-login">
+                                    <img src="../assets/img/best_seller.png" alt="" class="avatar-login" />
+                                    <span class="user-name" id="UserName_LG">user1</span>
+                                    <div class="user-login-list">
+                                        <ul class="user-login-list-item">
+                                            <li><a class="user-login-item" href="Admin.html">Tài Khoản Của Tôi</a></li>
+                                            <li><a class="user-login-item" href="purchaseOrder.html">Đơn Mua</a></li>
+                                            <li><a class="user-login-item" id="logOut">Đăng Xuất</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Header with search -->
+                <div class="header__wrap-center">
+                    <div class="grid">
+                        <div class="header-center">
+                            <div class="header__logo">
+                                <a href="home.html">
+                                    <img class="header__logo-img" src="../assets/img/logo.png" alt="" />
+                                </a>
+                            </div>
+                            <div class="header__search">
+                                <input
+                                    type="text"
+                                    class="header__search-input"
+                                    id="searchInput"
+                                    placeholder="Bạn muốn mua gì?"
+                                />
+                                <ul class="suggestionsSearch" id="suggestionsList"></ul>
+                                <button class="header__search-btn">
+                                    Tìm kiếm
+                                    <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+
+                            <!-- Cart layout -->
+                            <div class="header__cart">
+                                <div class="header__cart-wrap">
+                                    <button class="header__cart-btn">
+                                        Giỏ hàng của bạn
+                                        <i class="header__cart-icon fa-solid fa-cart-shopping"></i>
+                                    </button>
+                                    <span class="header__cart-notice" id="countgiohang">0</span>
+                                    <!-- No cart: header__cart-list--no-cart -->
+                                    <div class="header__cart-list">
+                                        <h4 class="header__cart-heading">GIỎ HÀNG CỦA TÔI</h4>
+                                        <ul class="header__cart-list-item" id="cartList"></ul>
+                                        <div class="header__cart-footer">
+                                            <div class="header__cart-total">
+                                                <span class="header__cart-total-text">TỔNG TIỀN:</span>
+                                                <span class="header__cart-total-price"
+                                                    ><span id="totalPay">0</span><sup>đ</sup></span
+                                                >
+                                            </div>
+                                            <div class="header__cart-button">
+                                                <button class="btn header__cart-view-cart" id="showCart">
+                                                    XEM GIỎ HÀNG
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="category">
+                    <div class="grid">
+                        <div class="category-wrap">
+                            <div class="category-dmsp">
+                                <i class="category-dmsp__icon fa-solid fa-list"></i>
+                                Danh mục sản phẩm
+                            </div>
+
+                            <ul class="category-list">
+                                <li class="category-item">
+                                    <a href="TLThieuNhi.html" class="category-item__link" id="TN">Sách Thiếu Nhi</a>
+                                </li>
+
+                                <li class="category-item">
+                                    <a href="TLVanHoc.html" class="category-item__link" id="VH">Sách Văn Học</a>
+                                </li>
+
+                                <li class="category-item">
+                                    <a href="TLTrinhTham.html" class="category-item__link" id="TT">Trinh Thám</a>
+                                </li>
+
+                                <li class="category-item">
+                                    <a href="TLChuKy.html" class="category-item__link" id="CK">Sách Có Chữ Ký</a>
+                                </li>
+
+                                <li class="category-item">
+                                    <a href="TLVanPP.html" class="category-item__link" id="VPP">Văn Phòng Phẩm</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <section class="product">
+                <div class="grid">
+                    <div class="product__info">
+                        <figure class="product__thumb">
+                            <img src="../assets/img/VH2.jpg" alt="" class="product__img" />
+                            <span class="product__sale">-10%</span>
+                        </figure>
+                        <section class="product__content">
+                            <h1 class="product__title">Bình Nguyên Lộc - Đò Dọc</h1>
+                            <p class="product__id">Mã SP: 8934974200802</p>
+                            <div class="product__price">
+                                <span class="product__price--current">103,500đ</span>
+                                <span class="product__price--old">115,000đ</span>
+                                <span class="product__price-text">(Bạn đã tiết kiệm được 11,500₫)</span>
+                            </div>
+                            <div class="product-box">
+                                <p class="product-box__title">Khuyến mãi & Ưu đãi tại <strong>BookStore</strong></p>
+                                <ul>
+                                    <li>
+                                        <strong>Freeship</strong> Hà Nội cho đơn hàng <strong>từ 1.000.000 đồng</strong>
+                                    </li>
+                                    <li>
+                                        <strong>Freeship</strong> tại các tỉnh thành ngoài Hà Nội cho đơn hàng
+                                        <strong>từ 1.500.000 đồng</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="product__text">Số lượng</p>
+                            <div class="product-add">
+                                <div class="quantity-btn">
+                                    <button
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                        class="quantity-btn__minus"
+                                    >
+                                        -
+                                    </button>
+                                    <input type="number" value="1" min="1" class="quantity-btn__input" />
+                                    <button
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                        class="quantity-btn__plus"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <button class="product-add__btn">Thêm vào giỏ hàng</button>
+                            </div>
+                            <p class="product__call">
+                                Gọi đặt mua <b>(024) 3994 7159</b> (Thứ 2 - Thứ 6 | 08:00 - 17:00)
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+            <section class="product-desc">
+                <div class="grid">
+                    <div class="product-desc__wrap">
+                        <h1 class="product-desc__title">Mô tả</h1>
+                        <div class="product-desc__container">
+                            <p class="product-desc__sub-title">Bình Nguyên Lộc - Đò Dọc</p>
+                            <p class="product-desc__content">
+                                Tình yêu là thứ gì vừa dữ dội, vừa mong manh. Bao đời nay người ta đã đúc kết như vậy.
+                                Cái khác thường trong tình yêu ở tiểu thuyết Đò Dọc là nhà văn Bình Nguyên Lộc đã đặt
+                                các nhân vật của mình trong hoàn cảnh hết sức trớ trêu: Cả mấy chị em gái của gia đình
+                                nọ đều đem lòng yêu một người. Chỉ vì họ không còn có ai để yêu, khi phải sống ở một
+                                chốn quê quạnh quẽ mà họ là dân thành thị mới chuyển về. Bao nhiêu chuyện từ vui vẻ, đến
+                                khôi hài, rồi buồn giận cứ diễn ra, một cách tự nhiên, để rồi cuối cùng nỗi éo le lên
+                                đến đỉnh điểm khi lý trí không thể cầm cương mà thắng được. Bi kịch xảy đến khi các chị
+                                em gái vốn là con nhà gia giáo và rất mực thương yêu nhau lại phải đối đầu nhau. Bình
+                                Nguyên Lộc đã lột tả hết cái không khí miền quê phảng lì buồn tẻ là nỗi ám ảnh của các
+                                cô gái, và nỗi chông chênh trong tâm hồn của chính họ. Nhưng ta vẫn thấy lấp lánh những
+                                điều đẹp đẽ trong các trang văn của nhà văn bậc thầy, cho dẫu nỗi buồn hay tuyệt vọng có
+                                dâng cao đến đâu. Lòng vị tha, mối trân trọng tình cảm gia đình vẫn là chiếc chìa khóa
+                                để mở tất cả các cánh cửa...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="grid">
+                    <div class="grid__row">
+                        <div class="grid__column-10-2">
+                            <h3 class="footer__heading">LIÊN KẾT NHANH</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    <a href="TLThieuNhi.html" class="footer-item__link">Sách Thiếu Nhi</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="TLVanHoc.html" class="footer-item__link">Sách Văn Học</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="TLTrinhTham.html" class="footer-item__link">Trinh Thám</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="TLChuKy.html" class="footer-item__link">Sách Có Chữ Ký</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="TLVanPP.html" class="footer-item__link">Văn Phòng Phẩm</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="home.html" class="footer-item__link">Gợi Ý Cho Bạn</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grid__column-10-2">
+                            <h3 class="footer__heading">CÁC BỘ SƯU TẬP</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Bút - Viết</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Dụng Cụ Học Sinh</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Sản Phẩm Về Giấy</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Dụng Cụ Văn Phòng</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Dụng Cụ Vẽ</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Sản Phẩm Điện Tử</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Văn Phòng Phẩm Khác</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grid__column-10-2">
+                            <h3 class="footer__heading">HỖ TRỢ KHÁCH HÀNG</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Chính sách bảo mật</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Hướng dẫn mua hàng</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Phương thức thanh toán</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Phương thức vận chuyển</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Chính sách bảo hành</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Chính sách đổi trả</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grid__column-10-2">
+                            <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Liên hệ hỗ trợ</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Hệ thống cửa hàng</a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Tin tuyển dụng</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grid__column-10-2">
+                            <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    <a href="#" class="footer-item__link">
+                                        <i class="footer-item__icon fa-brands fa-facebook"></i>
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">
+                                        <i class="footer-item__icon fa-brands fa-instagram"></i>
+                                        Instagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="../assets/js/script.js"></script>
+        <script src="../sqlserver/controler_search.js"></script>
+        <script src="../sqlserver/home.js"></script>
+        <script src="../sqlserver/checklogin.js"></script>
+        <script src="../sqlserver/cart.js"></script>
+        <script src="../sqlserver/ctsanpham.js"></script>
+    </body>
+</html>

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const sql = require("mssql");
 const session = require("express-session");
+const { engine } = require("express-handlebars");
 
 const app = express();
 app.use(cors());
@@ -25,6 +26,8 @@ sql.connect(config, (err) => {
     console.log("Kết nối thành công!");
 });
 
+// app.engine("handlebars", hbs.engine({ defaultLayout: "home" }));
+// app.set("view engine", "handlebars");
 // app.use(session({
 //     secret: 'rezorito',
 //     resave: false,
