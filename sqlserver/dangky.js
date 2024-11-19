@@ -21,7 +21,7 @@ document.getElementById('Btn_DK').addEventListener('click', async function(e) {
     .then(data => {
         console.log(data);
         alert('Đăng ký thành công!')
-        window.location.href = '../views/DangNhap.html'
+        window.location.href = '/WLogin'
     })
     .catch(error => {
         console.error('Error:', error);

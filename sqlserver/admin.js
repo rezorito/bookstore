@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataDSSPFromServer();
+    checkUserLogin();
 });
 
 function fetchDataDSSPFromServer() {
@@ -393,7 +394,7 @@ function fetchDeleteSPFromServer(BookID) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-    checkuserlogin();
+    // checkuserlogin();
     var isAdmin = document.getElementById('isAdmin');
     var isUser = document.getElementById('isUser');
     var dataUser = await getuser();

@@ -40,7 +40,7 @@ openPopupBtn.addEventListener('click', function (e) {
         }, 20000);
     } else {
         alert('Đặt hàng thành công!')
-        window.location.href = "../../views/home.html"
+        window.location.href = "/"
     }
 });
 
@@ -75,7 +75,7 @@ async function checkPaid(priceqrTotal, verificationCodes) {
                 alert('Thanh toán thành công')
                 isSucess = true;
                 await fetchSuccessPayFromServer();
-                window.location.href = "../../views/home.html"
+                window.location.href = "/"
             } else {
                 console.log('Chưa có giao dịch!');
             }

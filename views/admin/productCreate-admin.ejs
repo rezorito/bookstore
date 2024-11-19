@@ -1,0 +1,57 @@
+<link href="/css/bootstrap.css" rel="stylesheet" />
+<link href="/css/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="/css/admin/sb-admin.css" rel="stylesheet" />
+<link rel="stylesheet" href="/css/userPage.css" />
+
+<h1>Thêm thông tin sản phẩm</h1>
+<div class="product-display">
+    <div class="product-info">
+        <div class="product-info-detail">
+            <p class="user-info-label">ID</p>
+            <input class="user-name-textInput" type="text" id="sp_in_id" />
+        </div>
+        <div class="product-info-detail">
+            <p class="user-info-label">Tên sản phẩm</p>
+            <input class="user-name-textInput" type="text" id="sp_in_name" />
+        </div>
+        <div class="product-info-detail">
+            <p class="user-info-label">Thể loại</p>
+            <!-- <input class="user-name-textInput" type="text" id="sp_in_cate"> -->
+            <select class="user-name-textInput" id="sp_in_cate">
+                <option value="TN">Sách thiếu nhi</option>
+                <option value="VH">Sách văn học</option>
+                <option value="TT">Trinh thám</option>
+                <option value="CK">Sách có chữ ký</option>
+                <option value="CPP">Văn phòng phẩm</option>
+            </select>
+        </div>
+        <div class="product-info-detail">
+            <p class="user-info-label">Ảnh sản phẩm</p>
+            <div class="product-picture">
+                <img src="../assets/img/books.jpg" alt="" id="sp_in_img" class="imgsp" />
+            </div>
+            <a class="changeImg" id="changeButtonimg">Thay đổi</a>
+        </div>
+    </div>
+    <div class="product-info">
+        <div class="product-info-detail">
+            <p class="user-info-label">Khuyến mại (%)</p>
+            <input class="user-name-textInput" type="text" id="sp_in_sale" />
+        </div>
+        <div class="product-info-detail">
+            <p class="user-info-label">Giá gốc (000đ)</p>
+            <input class="user-name-textInput" type="text" id="sp_in_cost" />
+        </div>
+        <div class="product-info-detail">
+            <p class="user-info-label">Mô tả</p>
+            <textarea name="mota" cols="60" rows="13" id="sp_in_desp"></textarea>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary mt-2 ml-auto d-block">Thêm sản phẩm</button>
+
+
+<script src="/js/admin/jquery/jquery.min.js"></script>
+<script src="/js/admin/bootstrap.bundle.min.js"></script>
+<script src="/js/admin/jquery-easing/jquery.easing.min.js"></script>
+<script src="/js/admin/sb-admin.js"></script>

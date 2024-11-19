@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataCKFromServer();
-    checkuserlogin();
+    // checkuserlogin();
 });
 
 function fetchDataCKFromServer() {

@@ -1,5 +1,3 @@
-//làm chính
-//phần input search 
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataDSBOOKFromServer();
 });
@@ -20,6 +18,7 @@ function fetchDataDSBOOKFromServer() {
 
 const searchInput = document.getElementById('searchInput');
 const suggestionsList = document.getElementById('suggestionsList');
+const searchBtn = document.getElementById('btn_timKiem');
 let currentIndex = -1;
 
 searchInput.addEventListener('input', function () {
@@ -33,9 +32,9 @@ searchInput.addEventListener('input', function () {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.textContent = item.Name;
-            a.href = "Search.html";
+            a.href = "/WSearch";
             li.appendChild(a);
-            li.addEventListener('click', function(e) {
+            li.addEventListener('click', function (e) {
                 sessionStorage.setItem('wordsearchdsall', JSON.stringify(a.textContent));
                 window.location.href = a.href;
             });
@@ -65,13 +64,18 @@ searchInput.addEventListener('keydown', function (e) {
             searchInput.value = items[currentIndex].textContent;
             suggestionsList.style.display = 'none';
             sessionStorage.setItem('wordsearchdsall', JSON.stringify(searchInput.value));
-            window.location.href = '../views/Search.html';
-            // fetchDataSearchFromServer(searchInput.value)
+            window.location.href = '/WSearch';
         } else {
             sessionStorage.setItem('wordsearchdsall', JSON.stringify(searchInput.value));
-            window.location.href = '../views/Search.html';
-            // fetchDataSearchFromServer(searchInput.value)
+            window.location.href = '/WSearch';
         }
+    }
+});
+
+searchBtn.addEventListener('click', function (e) {
+    if (searchInput.value != "") {
+        sessionStorage.setItem('wordsearchdsall', JSON.stringify(searchInput.value));
+        window.location.href = '/WSearch';
     }
 });
 

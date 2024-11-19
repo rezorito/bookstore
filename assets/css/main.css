@@ -1454,7 +1454,7 @@ p {
 .user-login-list {
     position: absolute;
     top: calc(0% + 36px);
-    right: 70px;
+    right: 300px;
     background-color: var(--white-color);
     width: 150px;
     border-radius: 2px;

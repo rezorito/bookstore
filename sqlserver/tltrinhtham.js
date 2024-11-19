@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataTTFromServer();
-    checkuserlogin();
+    // checkuserlogin();
 });
 
 function fetchDataTTFromServer() {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     var container = document.getElementById('dssp');
                     container.innerHTML = ''
                     SortData.sort(function (a, b) {
-                        return a.Price - b.Price;
+                        return a.BookPrice - b.BookPrice;
                     });
                     sessionStorage.setItem('categoryTTData', JSON.stringify(SortData));
                     SortData = JSON.parse(sessionStorage.getItem('categoryTTData'));
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     var container = document.getElementById('dssp');
                     container.innerHTML = ''
                     SortData.sort(function (a, b) {
-                        return b.Price - a.Price;
+                        return b.BookPrice - a.BookPrice;
                     });
                     sessionStorage.setItem('categoryTTData', JSON.stringify(SortData));
                     SortData = JSON.parse(sessionStorage.getItem('categoryTTData'));

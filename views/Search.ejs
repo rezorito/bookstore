@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="/protects/protected.js"></script>
+
+<div class="app__container">
+    <!-- BANNER -->
+
+    <div class="banner">
+        <div class="banner__img2">
+            <a href="#">
+                <img src="https://theme.hstatic.net/1000363117/1000911694/14/ms_banner_img4.jpg?v=287" alt="img">
+            </a>
+        </div>
+    </div>
+
+    <div class="page-source">
+        <a href="/" class="home-page">TRANG CHỦ</a> / SÁCH MỚI PHÁT HÀNH
+    </div>
+
+    <div class="grid">
+        <div class="grid__row">
+            <div class="grid__column-2">
+                <div class="home-filter1">
+                    <h3 class="home-filter__label">Sắp xếp theo</h3>
+                    <button class="home-filter__btn btn">Phổ Biến</button>
+                    <button class="home-filter__btn btn btn--primary">Mới Nhất</button>
+                    <a href="">
+                        <button class="home-filter__btn btn">Bán Chạy</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid__column-10">
+
+                <div class="home-filter2">
+                    <div class="select-input">
+                        <span class="select-input__label">Giá</span>
+                        <i class="select-input__icon fas fa-angle-down"></i>
+                        <!-- List Options -->
+                        <ul class="select-input__list">
+                            <li class="select-input__item">
+                                <a href="" class="select-input__link" id="ASC">Giá: Thấp đến cao</a>
+                            </li>
+
+                            <li class="select-input__item">
+                                <a href="" class="select-input__link" id="DeSC">Giá: Cao đến thấp</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="home-product">
+                    <div class="grid__row" id="dssp">
+
+                    </div>
+                </div>
+                <ul class="pagination home-product__pagination" id="pagination">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+<script src="/controler_search.js"></script>
+<script src="/search.js"></script>
+<script src="/checklogin.js"></script>
+<script src="/cart.js"></script>
+<script src="/ctsanpham.js"></script>
