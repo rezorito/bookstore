@@ -13,7 +13,7 @@
     border-right: 1px solid #efefef;
 }
 
-.user-avatar-img img{
+.user-avatar-img img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -48,14 +48,15 @@
 }
 
 .user-info-label {
-    width: 100px;
+    width: 121px;
     font-size: 14px;
     text-align: right;
     margin-right: 20px;
+    margin-bottom: 0;
 }
 
 .user-name-textInput {
-    width: 416px;
+    width: 100%;
     height: 40px;
     font-size: 14px;
     padding-left: 8px;
@@ -73,11 +74,17 @@
 }
 
 .user-info-detail a,
-.product-info-detail a {
+.product-info-detail a.changeImg {
     font-size: 14px;
     margin-left: 4px;
     color: #05a;
     text-decoration: underline;
+}
+
+.product-info-detail a.changeImg:hover {
+    color: #05a;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .user-radio-input {
@@ -91,14 +98,13 @@
     margin-right: 10px;
 }
 
-
 /* ADMIN PAGE */
 
 .product-content {
     max-width: 1200px;
     margin: 0 auto;
     min-height: 480px;
-    border-top:  1px solid #efefef;
+    border-top: 1px solid #efefef;
 }
 
 .product-content h2 {
@@ -107,13 +113,13 @@
 }
 
 .product-display {
-    
+    width: 100%;
     display: flex;
+    column-gap: 20px;
 }
 
 .product-info {
-    margin-top: 20px;
-    margin-left: 70px;
+    width: 50%;
 }
 
 .product-info-detail {
@@ -123,7 +129,7 @@
 }
 
 .product-info-detail textarea {
-    width: 416px;
+    width: 100%;
     resize: none;
     font-size: 14px;
     padding: 8px;
@@ -142,21 +148,48 @@
 
 .product-picture img {
     width: 100%;
-    height: 200px;
+    height: 100%;
+    object-fit: cover;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse; 
+    border-collapse: collapse;
 }
 
-table, th, td {
-    border: 1px solid #ddd; 
+table,
+th,
+td {
+    border: 1px solid #ddd;
     padding: 8px;
-    text-align: center; 
+    text-align: center;
     font-size: 14px;
 }
 
 th {
     background-color: #f2f2f2;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.custom-modal {
+    max-width: 90%;
+}
+
+.detail-text {
+    margin: 0;
+}
+
+.detail-text-area {
+    max-width: 70%;
+    text-align: justify;
+}
+
+.product-info-custom {
+    align-items: start;
 }

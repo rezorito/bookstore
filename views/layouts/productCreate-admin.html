@@ -13,6 +13,8 @@
         <link href="../../assets/css/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Custom styles for this template-->
         <link href="../../assets/css/admin/sb-admin.css" rel="stylesheet" />
+        <!-- Custom admin create products -->
+        <link rel="stylesheet" href="../../assets/css/userPage.css" />
     </head>
 
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -56,10 +58,10 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseProducts">
                             <li>
-                                <a href="productCreate-admin.html">Thêm sản phẩm</a>
+                                <a href="login.html">Thêm sản phẩm</a>
                             </li>
                             <li>
-                                <a href="product-list.html">Danh sách sản phẩm</a>
+                                <a href="register.html">Danh sách sản phẩm</a>
                             </li>
                         </ul>
                     </li>
@@ -222,11 +224,51 @@
                 </ol>
                 <div class="row">
                     <div class="col-12">
-                        <h1>Blank</h1>
-                        <p>
-                            This is an example of a blank page that you can use as a starting point for creating new
-                            ones.
-                        </p>
+                        <h1>Thêm thông tin sản phẩm</h1>
+                        <div class="product-display">
+                            <div class="product-info">
+                                <div class="product-info-detail">
+                                    <p class="user-info-label">ID</p>
+                                    <input class="user-name-textInput" type="text" id="sp_in_id" />
+                                </div>
+                                <div class="product-info-detail">
+                                    <p class="user-info-label">Tên sản phẩm</p>
+                                    <input class="user-name-textInput" type="text" id="sp_in_name" />
+                                </div>
+                                <div class="product-info-detail">
+                                    <p class="user-info-label">Thể loại</p>
+                                    <!-- <input class="user-name-textInput" type="text" id="sp_in_cate"> -->
+                                    <select class="user-name-textInput" id="sp_in_cate">
+                                        <option value="TN">Sách thiếu nhi</option>
+                                        <option value="VH">Sách văn học</option>
+                                        <option value="TT">Trinh thám</option>
+                                        <option value="CK">Sách có chữ ký</option>
+                                        <option value="CPP">Văn phòng phẩm</option>
+                                    </select>
+                                </div>
+                                <div class="product-info-detail">
+                                    <p class="user-info-label">Ảnh sản phẩm</p>
+                                    <div class="product-picture">
+                                        <img src="../assets/img/books.jpg" alt="" id="sp_in_img" class="imgsp" />
+                                    </div>
+                                    <a class="changeImg" id="changeButtonimg">Thay đổi</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-info-detail">
+                                    <p class="user-info-label">Khuyến mại (%)</p>
+                                    <input class="user-name-textInput" type="text" id="sp_in_sale" />
+                                </div>
+                                <div class="product-info-detail">
+                                    <p class="user-info-label">Giá gốc (000đ)</p>
+                                    <input class="user-name-textInput" type="text" id="sp_in_cost" />
+                                </div>
+                                <div class="product-info-detail">
+                                    <p class="user-info-label">Mô tả</p>
+                                    <textarea name="mota" cols="60" rows="13" id="sp_in_desp"></textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

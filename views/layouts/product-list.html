@@ -13,6 +13,8 @@
         <link href="../../assets/css/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Custom styles for this template-->
         <link href="../../assets/css/admin/sb-admin.css" rel="stylesheet" />
+        <!-- Custom admin create products -->
+        <link rel="stylesheet" href="../../assets/css/userPage.css" />
     </head>
 
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -222,11 +224,59 @@
                 </ol>
                 <div class="row">
                     <div class="col-12">
-                        <h1>Blank</h1>
-                        <p>
-                            This is an example of a blank page that you can use as a starting point for creating new
-                            ones.
-                        </p>
+                        <h1>Danh sách sản phẩm</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%">ID</th>
+                                    <!-- <th style="width: 10%">Ảnh sản phẩm</th> -->
+                                    <th style="width: 20%">Tên sản phẩm</th>
+                                    <th style="width: 10%">Thể loại</th>
+                                    <th style="width: 10%">Giá gốc</th>
+                                    <th style="width: 5%">Sale</th>
+                                    <!-- <th style="width: 100%;">Mô tả</th> -->
+                                    <th style="width: 10%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <tr>
+                                    <td style="width: 5%">CK01</td>
+                                    <!-- <td style="width: 10%">
+                                        <img
+                                            src="https://product.hstatic.net/1000363117/product/angikhongdochai_2adfaf44ccf74c70895f9b4d6aed4da5_master.jpg"
+                                            style="width: 100px"
+                                        />
+                                    </td> -->
+                                    <td style="width: 20%">ĂN GÌ CHO KHÔNG ĐỘC HẠI - SÁCH CÓ CHỮ KÝ</td>
+                                    <td style="width: 10%">Sách có chữ ký</td>
+                                    <td style="width: 10%">100.000 đ</td>
+                                    <td style="width: 5%">1</td>
+                                    <!-- <th style="width: 100%;">Mô tả</th> -->
+                                    <td style="width: 10%">
+                                        <div class="btn-wrap">
+                                            <a
+                                                class="btn btn-info"
+                                                style="color: #fff"
+                                                data-toggle="modal"
+                                                data-target="#detailModal"
+                                            >
+                                                Xem
+                                            </a>
+                                            <a
+                                                class="btn btn-dark"
+                                                style="color: #fff"
+                                                data-toggle="modal"
+                                                data-target="#updateModal"
+                                            >
+                                                Sửa
+                                            </a>
+                                            <button class="btn btn-danger">Xóa</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="pagination dssp-product__pagination" id="ds_pagination"></ul>
                     </div>
                 </div>
             </div>
@@ -270,6 +320,149 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Update Modal -->
+            <div
+                class="modal fade"
+                id="updateModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog custom-modal" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin sản phẩm</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="product-display">
+                                <div class="product-info">
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">ID</p>
+                                        <input class="user-name-textInput" type="text" id="sp_in_id" />
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Tên sản phẩm</p>
+                                        <input class="user-name-textInput" type="text" id="sp_in_name" />
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Thể loại</p>
+                                        <!-- <input class="user-name-textInput" type="text" id="sp_in_cate"> -->
+                                        <select class="user-name-textInput" id="sp_in_cate">
+                                            <option value="TN">Sách thiếu nhi</option>
+                                            <option value="VH">Sách văn học</option>
+                                            <option value="TT">Trinh thám</option>
+                                            <option value="CK">Sách có chữ ký</option>
+                                            <option value="CPP">Văn phòng phẩm</option>
+                                        </select>
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Ảnh sản phẩm</p>
+                                        <div class="product-picture">
+                                            <img src="../assets/img/books.jpg" alt="" id="sp_in_img" class="imgsp" />
+                                        </div>
+                                        <a class="changeImg" id="changeButtonimg">Thay đổi</a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Khuyến mại (%)</p>
+                                        <input class="user-name-textInput" type="text" id="sp_in_sale" />
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Giá gốc (000đ)</p>
+                                        <input class="user-name-textInput" type="text" id="sp_in_cost" />
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Mô tả</p>
+                                        <textarea name="mota" cols="60" rows="13" id="sp_in_desp"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+                            <a class="btn btn-primary" href="login.html">Sửa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Detail Modal -->
+            <div
+                class="modal fade"
+                id="detailModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog custom-modal" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thông tin sản phẩm</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="product-display">
+                                <div class="product-info">
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">ID:</p>
+                                        <p class="detail-text">CK01</p>
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Tên sản phẩm:</p>
+                                        <p class="detail-text">ĂN GÌ CHO KHÔNG ĐỘC HẠI - SÁCH CÓ CHỮ KÝ</p>
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Thể loại:</p>
+                                        <p class="detail-text">Sách có chữ ký</p>
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Ảnh sản phẩm:</p>
+                                        <div class="product-picture">
+                                            <img
+                                                src="https://product.hstatic.net/1000363117/product/angikhongdochai_2adfaf44ccf74c70895f9b4d6aed4da5_master.jpg"
+                                                alt=""
+                                                id="sp_in_img"
+                                                class="imgsp"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Khuyến mại (%):</p>
+                                        <p class="detail-text">1</p>
+                                    </div>
+                                    <div class="product-info-detail">
+                                        <p class="user-info-label">Giá gốc (000đ):</p>
+                                        <p class="detail-text">100.000 đ</p>
+                                    </div>
+                                    <div class="product-info-detail product-info-custom">
+                                        <p class="user-info-label">Mô tả:</p>
+                                        <p class="detail-text detail-text-area">
+                                            Câu chuyện thú vị và bổ ích về thực dưỡng, ăn chay, hay detox... nhìn từ góc
+                                            độ khoa học và thực tiễn đời sống, môi trường, được thể hiện bằng giọng văn
+                                            hài hước và sắc sảo. Tác giả vốn là cây viết chủ lực của trang soi.com, viết
+                                            về ẩm thực và văn hóa
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Bootstrap core JavaScript-->
             <script src="../../assets/js/admin/jquery/jquery.min.js"></script>
             <script src="../../assets/js/admin/bootstrap.bundle.min.js"></script>
