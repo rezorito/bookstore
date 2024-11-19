@@ -6,7 +6,7 @@ function fetchDataCTSPFromServer(bookID) {
             if (Object.keys(data).length === 0) {
                 console.log("Dữ liệu rỗng!");
             } else {
-                window.location.href = '../views/CTSanPham.html';
+                window.location.href = '/WCTSP';
                 sessionStorage.setItem('bookData', JSON.stringify(data));
             }
         })
@@ -14,80 +14,40 @@ function fetchDataCTSPFromServer(bookID) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    checkuserlogin();
     var bookCTData = JSON.parse(sessionStorage.getItem('bookData'));
     if (bookCTData) {
         console.log(bookCTData);
         var containerCT = document.getElementById('ctsp');
         bookCTData.forEach(function (bookCT) {
-            var bookCTElement = createBookCTElement(bookCT);
-            containerCT.appendChild(bookCTElement);
+            createBookCTElement(bookCT);
         });
     }
 });
 
 function createBookCTElement(bookCTData) {
-    var rowDiv = document.createElement('div');
-    rowDiv.classList.add('row');
+    document.querySelector('.product__img').src = bookCTData.BookImage;
+    if (bookCTData.BookSale == 0) {
+        const element1 = document.querySelector('.product__sale');
+        element1.style.display = 'none';
+        document.querySelector('.product__price--current').textContent = bookCTData.BookPrice * 1000 + 'đ';
+        const element2 = document.querySelector('.product__price--old');
+        element2.style.display = 'none';
+        const element3 = document.querySelector('.product__price-text');
+        element3.style.display = 'none';
+    } else {
+        priceSale = bookCTData.BookPrice * bookCTData.BookSale / 100 * 1000;
+        priceCurrent = bookCTData.BookPrice * 1000 - priceSale ;
+        document.querySelector('.product__sale').textContent = bookCTData.BookSale + '%';
+        document.querySelector('.product__price--current').textContent = priceCurrent + 'đ';
+        document.querySelector('.product__price--old').textContent = bookCTData.BookPrice * 1000 + 'đ';
+        document.querySelector('.product__price-text').textContent = '(Bạn đã tiết kiệm được ' + priceSale + 'đ)';
+    }
+    document.querySelector('.product__title').textContent = bookCTData.BookName;
+    document.querySelector('.product__id').textContent = bookCTData.bookID;
+    document.querySelector('.product-add__btn').addEventListener('click', () => {
+        AddCart(bookCTData)
+    });
 
-    var firstColumnDiv = document.createElement('div');
-    firstColumnDiv.classList.add('col-2');
-
-    var image = document.createElement('img');
-    image.src = bookCTData.BookImage;
-    image.width = '100%';
-    image.id = 'ProductImg';
-
-    var secondColumnDiv = document.createElement('div');
-    secondColumnDiv.classList.add('col-2');
-
-    var productDiv = document.createElement('div');
-    productDiv.classList.add('CTProduct');
-
-    var title = document.createElement('h1');
-    title.textContent = bookCTData.BookName;
-
-    var priceParagraph = document.createElement('p');
-    var priceSpan = document.createElement('span');
-    priceSpan.textContent = bookCTData.BookPrice;
-    priceParagraph.appendChild(priceSpan);
-    priceParagraph.innerHTML += '.000 đ';
-
-    var quantityInput = document.createElement('input');
-    quantityInput.type = 'number';
-    quantityInput.value = '1';
-    quantityInput.min = '1';
-
-    var addToCartButton = document.createElement('button');
-    addToCartButton.classList.add('butn');
-    addToCartButton.textContent = 'Thêm Vào Giỏ Hàng';
-    addToCartButton.addEventListener('click', async function(e) {
-        AddCart(bookCTData);
-    })
-
-    var descriptionTitle = document.createElement('h3');
-    descriptionTitle.textContent = 'Mô Tả';
-    var descriptionIcon = document.createElement('i');
-    descriptionIcon.classList.add('fa', 'fa-indent');
-    descriptionTitle.appendChild(descriptionIcon);
-
-    var descriptionParagraph = document.createElement('p');
-    descriptionParagraph.textContent = bookCTData.BookContent;
-
-    // Append các phần tử vào nhau theo cấu trúc
-    firstColumnDiv.appendChild(image);
-
-    productDiv.appendChild(title);
-    productDiv.appendChild(priceParagraph);
-    productDiv.appendChild(quantityInput);
-    productDiv.appendChild(addToCartButton);
-    productDiv.appendChild(descriptionTitle);
-    productDiv.appendChild(descriptionParagraph);
-
-    secondColumnDiv.appendChild(productDiv);
-
-    rowDiv.appendChild(firstColumnDiv);
-    rowDiv.appendChild(secondColumnDiv);
-
-    return rowDiv;
+    document.querySelector('.product-desc__sub-title').textContent = bookCTData.BookName;
+    document.querySelector('.product-desc__content').textContent = bookCTData.BookContent;
 }

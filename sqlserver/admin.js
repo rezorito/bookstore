@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetchDataDSSPFromServer();
+    checkUserLogin();
 });
 
 function fetchDataDSSPFromServer() {
@@ -10,8 +10,6 @@ function fetchDataDSSPFromServer() {
                 console.log("Dữ liệu rỗng!");
             } else {
                 console.log(data);
-                // fillDataTable(data)
-                //
                 sessionStorage.setItem('dsspall', JSON.stringify(data));
             }
         })
@@ -393,7 +391,7 @@ function fetchDeleteSPFromServer(BookID) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-    checkuserlogin();
+    // checkuserlogin();
     var isAdmin = document.getElementById('isAdmin');
     var isUser = document.getElementById('isUser');
     var dataUser = await getuser();

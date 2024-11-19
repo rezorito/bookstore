@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     var wordsearchdsall = JSON.parse(sessionStorage.getItem('wordsearchdsall'));
     fetchDataSearchFromServer(wordsearchdsall)
-    checkuserlogin();
 });
 
 function fetchDataSearchFromServer(BookName) {

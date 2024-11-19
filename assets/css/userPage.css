@@ -179,6 +179,8 @@ th {
 
 .custom-modal {
     max-width: 90%;
+    margin: auto;
+    top: 25%;
 }
 
 .detail-text {

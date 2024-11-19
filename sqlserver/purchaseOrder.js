@@ -1,7 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-    checkuserlogin();
+    checkUserLogin();
     LoadOrderSP();
+    showLogin();
 });
+
+const showLogin = async () => {
+    const token = localStorage.getItem('token');
+    var unLoginElements = document.getElementById('UnLoginUser')
+    var LoginElements = document.getElementById('LoginUser')
+    if (!token) {
+        unLoginElements.style.display = 'block'
+        LoginElements.style.display = 'none'
+        cartShow.style.display = 'none'
+    } else {
+        const dataUser = await getuser();
+        unLoginElements.style.display = 'none'
+        LoginElements.style.display = 'block'
+        document.getElementById("UserName_LG").innerText = dataUser.user.UserName;
+        alert("ha")
+    }
+}
 
 async function fetchDataPaySPFromServer(UserName) {
     const formData = {
@@ -51,7 +69,6 @@ async function LoadOrderSP() {
                 var Element = createCartItemRow(item);
                 payList.appendChild(Element);
             });
-            // document.getElementById('orderTotal').innerHTML = priceSP;
         }
     }
 }
@@ -160,7 +177,7 @@ var btnPay = document.getElementById('ShowPayment').addEventListener('click', as
         } else {
             var jsonData = JSON.stringify(DSPayment);
             var encodedData = encodeURIComponent(jsonData);
-            window.location.href = `../views/thanhtoan.html?data=${encodedData}`
+            window.location.href = `/WThanhToan?data=${encodedData}`
         }
     }
 })

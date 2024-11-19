@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataDSSPFromServer();
-    checkuserlogin();
+    // checkuserlogin();
 });
 
 function fetchDataDSSPFromServer() {
@@ -88,38 +88,47 @@ function createBookElement(book) {
     var priceDiv = document.createElement('div');
     priceDiv.classList.add('home-product-item__price');
 
-    var currentPrice = document.createElement('p');
-    currentPrice.classList.add('home-product-item__current-price');
-    currentPrice.innerHTML = '<span>' + book.BookPrice + '.000' + '</span><sup>đ</sup>';
+    if (book.BookSale != 0) {
+        var currentPrice = document.createElement('p');
+        currentPrice.classList.add('home-product-item__current-price');
+        currentPrice.innerHTML = '<span>' + book.BookPrice + '.000' + '</span><sup>đ</sup>';
 
-    var oldPriceTotal = Math.floor(book.BookPrice + book.BookPrice * book.BookSale / 100);
-    var oldPrice = document.createElement('span');
-    oldPrice.classList.add('home-product-item__old-price');
-    oldPrice.innerHTML = oldPriceTotal + '.000' + '<sup>đ</sup>';
+        var oldPriceTotal = Math.floor(book.BookPrice + book.BookPrice * book.BookSale / 100);
+        var oldPrice = document.createElement('span');
+        oldPrice.classList.add('home-product-item__old-price');
+        oldPrice.innerHTML = oldPriceTotal + '.000' + '<sup>đ</sup>';
 
-    var saleOffDiv = document.createElement('div');
-    saleOffDiv.classList.add('home-product-item__sale-off');
+        var saleOffDiv = document.createElement('div');
+        saleOffDiv.classList.add('home-product-item__sale-off');
 
-    var saleOffPercent = document.createElement('span');
-    saleOffPercent.classList.add('home-product-item__sale-off-percent');
-    saleOffPercent.textContent = '-' + book.BookSale + ' %';
+        var saleOffPercent = document.createElement('span');
+        saleOffPercent.classList.add('home-product-item__sale-off-percent');
+        saleOffPercent.textContent = '-' + book.BookSale + ' %';
+
+        saleOffDiv.appendChild(saleOffPercent);
+        priceDiv.appendChild(currentPrice);
+        priceDiv.appendChild(oldPrice);
+        productDiv.appendChild(saleOffDiv);
+
+    } else {
+        var currentPrice = document.createElement('p');
+        currentPrice.classList.add('home-product-item__current-price');
+        currentPrice.innerHTML = '<span>' + book.BookPrice + '.000' + '</span><sup>đ</sup>';
+
+        priceDiv.appendChild(currentPrice);
+    }
 
     var button = document.createElement('button');
     button.classList.add('btn', 'btn-addtocart');
     button.textContent = 'Thêm vào giỏ hàng';
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         AddCart(book);
     })
-
-    saleOffDiv.appendChild(saleOffPercent);
-    priceDiv.appendChild(currentPrice);
-    priceDiv.appendChild(oldPrice);
 
     productDiv.appendChild(link);
     link.appendChild(image);
     link.appendChild(title);
     productDiv.appendChild(priceDiv);
-    productDiv.appendChild(saleOffDiv);
     productDiv.appendChild(button);
 
     columnDiv.appendChild(productDiv);
