@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetchDataDSSPFromServer();
     checkUserLogin();
 });
 
@@ -11,8 +10,6 @@ function fetchDataDSSPFromServer() {
                 console.log("Dữ liệu rỗng!");
             } else {
                 console.log(data);
-                // fillDataTable(data)
-                //
                 sessionStorage.setItem('dsspall', JSON.stringify(data));
             }
         })
