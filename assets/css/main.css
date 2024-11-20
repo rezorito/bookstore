@@ -986,7 +986,7 @@ p {
 }
 
 .content {
-    display: flex;
+    display: flex !important;
     max-width: 1200px;
     margin: 0 auto;
     min-height: 480px;
@@ -1443,6 +1443,7 @@ p {
 
 /* User Login */
 .user-login {
+    position: relative;
     display: flex;
     align-items: center;
 }
@@ -1453,8 +1454,8 @@ p {
 
 .user-login-list {
     position: absolute;
-    top: calc(0% + 36px);
-    right: 300px;
+    top: 30px;
+    right: -30px;
     background-color: var(--white-color);
     width: 150px;
     border-radius: 2px;

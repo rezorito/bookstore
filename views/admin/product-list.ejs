@@ -3,9 +3,16 @@
 <link href="/css/admin/sb-admin.css" rel="stylesheet" />
 <link rel="stylesheet" href="/css/userPage.css" />
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-between">
     <h1>Danh sách sản phẩm</h1>
-    <button class="btn btn-primary" style="height: 40px; align-self: center;" data-toggle="modal" data-target="#addModal">Thêm sản phẩm</button>
+    <button
+        class="btn btn-primary"
+        style="height: 40px; align-self: center"
+        data-toggle="modal"
+        data-target="#addModal"
+    >
+        Thêm sản phẩm
+    </button>
 </div>
 <table>
     <thead>
@@ -20,14 +27,19 @@
             <th style="width: 10%">Action</th>
         </tr>
     </thead>
-    <tbody id="tableBody">
-    </tbody>
+    <tbody id="tableBody"></tbody>
 </table>
 <ul class="pagination dssp-product__pagination" id="ds_pagination"></ul>
 
 <!-- Add Modal -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div
+    class="modal fade"
+    id="addModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
     <div class="modal-dialog custom-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -61,7 +73,7 @@
                         <div class="product-info-detail">
                             <p class="user-info-label">Ảnh sản phẩm</p>
                             <div class="product-picture">
-                                <img src="/img/books.jpg" alt="" class="imgsp"  id="img_Book_add"/>
+                                <img src="/img/books.jpg" alt="" class="imgsp" id="img_Book_add" />
                             </div>
                             <a class="changeImg">Thay đổi</a>
                         </div>
@@ -69,11 +81,11 @@
                     <div class="product-info">
                         <div class="product-info-detail">
                             <p class="user-info-label">Khuyến mại (%)</p>
-                            <input class="user-name-textInput" type="text" id="sale_Book_add"/>
+                            <input class="user-name-textInput" type="text" id="sale_Book_add" />
                         </div>
                         <div class="product-info-detail">
                             <p class="user-info-label">Giá gốc (000đ)</p>
-                            <input class="user-name-textInput" type="text" id="price_Book_add"/>
+                            <input class="user-name-textInput" type="text" id="price_Book_add" />
                         </div>
                         <div class="product-info-detail">
                             <p class="user-info-label">Mô tả</p>
@@ -91,8 +103,14 @@
 </div>
 
 <!-- Update Modal -->
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div
+    class="modal fade"
+    id="updateModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
     <div class="modal-dialog custom-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -110,7 +128,7 @@
                         </div>
                         <div class="product-info-detail">
                             <p class="user-info-label">Tên sản phẩm</p>
-                            <input class="user-name-textInput" type="text" id="name_Book_ed"/>
+                            <input class="user-name-textInput" type="text" id="name_Book_ed" />
                         </div>
                         <div class="product-info-detail">
                             <p class="user-info-label">Thể loại</p>
@@ -126,20 +144,20 @@
                         <div class="product-info-detail">
                             <p class="user-info-label">Ảnh sản phẩm</p>
                             <div class="product-picture">
-                                <img src="/img/books.jpg" alt="" class="imgsp"  id="img_Book_ed"/>
+                                <img src="/img/books.jpg" alt="" class="imgsp" id="img_Book_ed" />
                             </div>
-                            <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                            <input type="file" id="fileInput" style="display: none" accept="image/*" />
                             <a class="changeImg">Thay đổi</a>
                         </div>
                     </div>
                     <div class="product-info">
                         <div class="product-info-detail">
                             <p class="user-info-label">Khuyến mại (%)</p>
-                            <input class="user-name-textInput" type="text" id="sale_Book_ed"/>
+                            <input class="user-name-textInput" type="text" id="sale_Book_ed" />
                         </div>
                         <div class="product-info-detail">
                             <p class="user-info-label">Giá gốc (000đ)</p>
-                            <input class="user-name-textInput" type="text" id="price_Book_ed"/>
+                            <input class="user-name-textInput" type="text" id="price_Book_ed" />
                         </div>
                         <div class="product-info-detail">
                             <p class="user-info-label">Mô tả</p>
@@ -157,8 +175,14 @@
 </div>
 
 <!-- Detail Modal -->
-<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div
+    class="modal fade"
+    id="detailModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
     <div class="modal-dialog custom-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -185,8 +209,12 @@
                         <div class="product-info-detail">
                             <p class="user-info-label">Ảnh sản phẩm:</p>
                             <div class="product-picture">
-                                <img src="https://product.hstatic.net/1000363117/product/angikhongdochai_2adfaf44ccf74c70895f9b4d6aed4da5_master.jpg"
-                                    alt="" id="img_Book_dt" class="imgsp" />
+                                <img
+                                    src="https://product.hstatic.net/1000363117/product/angikhongdochai_2adfaf44ccf74c70895f9b4d6aed4da5_master.jpg"
+                                    alt=""
+                                    id="img_Book_dt"
+                                    class="imgsp"
+                                />
                             </div>
                         </div>
                     </div>
@@ -202,10 +230,9 @@
                         <div class="product-info-detail product-info-custom">
                             <p class="user-info-label">Mô tả:</p>
                             <p class="detail-text detail-text-area" id="moTa_Book_dt">
-                                Câu chuyện thú vị và bổ ích về thực dưỡng, ăn chay, hay detox... nhìn từ góc
-                                độ khoa học và thực tiễn đời sống, môi trường, được thể hiện bằng giọng văn
-                                hài hước và sắc sảo. Tác giả vốn là cây viết chủ lực của trang soi.com, viết
-                                về ẩm thực và văn hóa
+                                Câu chuyện thú vị và bổ ích về thực dưỡng, ăn chay, hay detox... nhìn từ góc độ khoa học
+                                và thực tiễn đời sống, môi trường, được thể hiện bằng giọng văn hài hước và sắc sảo. Tác
+                                giả vốn là cây viết chủ lực của trang soi.com, viết về ẩm thực và văn hóa
                             </p>
                         </div>
                     </div>
@@ -213,6 +240,32 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+    class="modal fade"
+    id="deleteModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog custom-modal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn muốn xóa thông tin này không?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+                <button class="btn btn-danger">Xóa</button>
             </div>
         </div>
     </div>

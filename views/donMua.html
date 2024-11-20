@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Giỏ hàng</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+        <link rel="stylesheet" href="../assets/css/base.css" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/purchaseOrder.css" />
+        <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <script src="/js/main.js" defer></script>
+        <script src="/protects/protected.js"></script>
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="header-top">
+                <div class="grid">
+                    <nav class="header__navbar">
+                        <ul class="header__navbar-list">
+                            <li class="header__navbar-item header__navbar-item--separate">
+                                <a href="/" class="header__navbar-link">Hệ Thống Cửa Hàng</a>
+                            </li>
+                            <li class="header__navbar-item">
+                                <a href="" class="header__navbar-title">Liên Hệ Hỗ Trợ</a>
+                                <a href="" class="header__navvar-icon-link">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="" class="header__navvar-icon-link">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="header__navbar-list" id="UnLoginUser">
+                            <a
+                                href="/WLogin"
+                                class="header__navbar-title header__navbar-item header__navbar-item--separate"
+                                >Đăng nhập</a
+                            >
+                            <a href="/WRegister" class="header__navbar-title header__navbar-item">Đăng ký</a>
+                        </ul>
+                        <ul class="header__navbar-list" id="LoginUser">
+                            <div class="user-login">
+                                <img src="/img/best_seller.png" alt="" class="avatar-login" />
+                                <span class="user-name" id="UserName_LG">user1</span>
+                                <div class="user-login-list">
+                                    <ul class="user-login-list-item">
+                                        <li><a class="user-login-item" id="btn_MyAccount">Tài Khoản Của Tôi</a></li>
+                                        <li><a class="user-login-item" href="/WGioHang">Đơn Mua</a></li>
+                                        <li><a class="user-login-item" id="logOut">Đăng Xuất</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- Header with search -->
+            <div class="header-center-pay">
+                <div class="header__logo">
+                    <a href="/">
+                        <img class="header__logo-img" src="../assets/img/logo.png" alt="" />
+                    </a>
+                </div>
+                <div class="header__divider"></div>
+                <div class="header__name">Giỏ Hàng</div>
+                <div class="header__search">
+                    <input type="text" class="header__search-input" id="searchInput" placeholder="Bạn muốn mua gì?" />
+                    <ul class="suggestionsSearch" id="suggestionsList"></ul>
+                    <button class="header__search-btn">
+                        Tìm kiếm
+                        <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="app__container">
+            <div class="order">
+                <div class="grid">
+                    <div class="order__wrap">
+                        <div class="tabs">
+                            <div class="tabs__item tabs__item--active">Tất cả</div>
+                            <div class="tabs__item">Chờ thanh toán <span>(1)</span></div>
+                            <div class="tabs__item">Vận chuyển</div>
+                            <div class="tabs__item">Chờ giao hàng</div>
+                            <div class="tabs__item">Hoàn thành</div>
+                            <div class="tabs__item">Đã hủy</div>
+                            <div class="tabs__item">Trả hàng/Hoàn tiền</div>
+                        </div>
+                        <div class="order-list">
+                            <div class="order-list__tab order-list__tab--active">
+                                <!-- Order 1 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="../assets/img/CK9.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item__total">
+                                        <div class="order-item__total-price">
+                                            <span>Thành tiền:</span>
+                                            <span>79.000đ</span>
+                                        </div>
+                                        <button class="order-item__btn">Hủy Đơn Hàng</button>
+                                    </div>
+                                </article>
+                                <!-- Order 2 -->
+                                <article class="order-item">
+                                    <!-- Item 1 -->
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="../assets/img/VH2.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <!-- Item 2 -->
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="../assets/img/CK16.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 2</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item__total">
+                                        <div class="order-item__total-price">
+                                            <span>Thành tiền:</span>
+                                            <span>79.000đ</span>
+                                        </div>
+                                        <button class="order-item__btn">Hủy Đơn Hàng</button>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="order-list__tab">
+                                <!-- Order 1 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="../assets/img/VH4.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item__total">
+                                        <div class="order-item__total-price">
+                                            <span>Thành tiền:</span>
+                                            <span>79.000đ</span>
+                                        </div>
+                                        <button class="order-item__btn">Hủy Đơn Hàng</button>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="order-list__tab">
+                                <div class="order-list__empty">
+                                    <img src="../assets/img/empty_order.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="order-list__tab">4</div>
+                            <div class="order-list__tab">5</div>
+                            <div class="order-list__tab">6</div>
+                            <div class="order-list__tab">7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">LIÊN KẾT NHANH</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sách Thiếu Nhi</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sách Văn Học</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trinh Thám</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sách Có Chữ Ký</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Văn Phòng Phẩm</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Gợi Ý Cho Bạn</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">CÁC BỘ SƯU TẬP</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Bút - Viết</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Dụng Cụ Học Sinh</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sản Phẩm Về Giấy</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Dụng Cụ Văn Phòng</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Dụng Cụ Vẽ</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Sản Phẩm Điện Tử</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Văn Phòng Phẩm Khác</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">HỖ TRỢ KHÁCH HÀNG</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Chính sách bảo mật</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hướng dẫn mua hàng</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Phương thức thanh toán</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Phương thức vận chuyển</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Chính sách bảo hành</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Chính sách đổi trả</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Liên hệ hỗ trợ</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hệ thống cửa hàng</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Tin tuyển dụng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-10-2">
+                        <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="/purchaseOrder.js"></script>
+        <script src="/checklogin.js"></script>
+        <script src="/controler_search.js"></script>
+        <script src="../assets/js/donMua.js"></script>
+    </body>
+</html>

@@ -116,3 +116,157 @@
 .countsp {
     width: 80px;
 }
+
+/* Đơn Mua CSS */
+
+.order {
+    padding: 20px 0;
+    min-height: 100vh;
+}
+
+.tabs {
+    background: #fff;
+    display: flex;
+    height: 53px;
+    width: 100%;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.tabs__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14.3%;
+    font-size: 1.6rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.09);
+    transition: all 0.3s ease;
+}
+
+.tabs__item span {
+    margin-left: 4px;
+    color: var(--theme-color);
+}
+
+.tabs__item:not(.tabs__item--active):hover {
+    cursor: pointer;
+    color: var(--theme-color);
+}
+
+.tabs__item.tabs__item--active {
+    color: var(--theme-color);
+    border-bottom-color: var(--theme-color);
+}
+
+.order-list__tab {
+    display: none;
+}
+
+.order-list__tab.order-list__tab--active {
+    display: block;
+}
+
+.order-item {
+    margin-top: 12px;
+    background: #fff;
+    padding-top: 12px;
+}
+
+.order-item__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-item__left {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.order-item__thumb {
+    width: 82px;
+    height: 82px;
+    border: 1px solid #ccc;
+    margin: 0;
+}
+
+.order-item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-item__text {
+    font-size: 1.6rem;
+    color: #000;
+}
+
+.order-item__price {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 1.4rem;
+}
+
+.order-item__price--old {
+    color: #949494;
+    text-decoration: line-through;
+}
+
+.order-item__price--current {
+    font-weight: 600;
+    color: var(--theme-color);
+}
+
+.order-item__total {
+    text-align: right;
+    padding: 24px;
+}
+
+.order-item__total-price {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.order-item__total-price span:first-child {
+    font-size: 1.4rem;
+    color: #000;
+}
+
+.order-item__total-price span:nth-child(2) {
+    color: var(--theme-color);
+    font-size: 2.4rem;
+}
+
+.order-item__btn {
+    min-height: 40px;
+    min-width: 150px;
+    margin-top: 24px;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    color: #555;
+}
+
+.order-item__btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.order-list__empty {
+    margin-top: 12px;
+    background: #fff;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

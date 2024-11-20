@@ -3,20 +3,30 @@ const cors = require("cors");
 const sql = require("mssql");
 const session = require("express-session");
 const { engine } = require("express-handlebars");
-const open = require('open');
+const open = require("open");
 
 const app = express();
 app.use(cors());
 app.use(express.json()); // Middleware để xử lý JSON trong yêu cầu
-const path = require('path');
-const expressLayouts = require('express-ejs-layouts');
-const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'rezorito';
+const path = require("path");
+const expressLayouts = require("express-ejs-layouts");
+const jwt = require("jsonwebtoken");
+const SECRET_KEY = "rezorito";
+
+// const config = {
+//     user: "sa",
+//     password: "rezorito",
+//     server: "RezoRito\\RITO",
+//     database: "QLBOOKSTORE",
+//     options: {
+//         trustServerCertificate: true,
+//     },
+// };
 
 const config = {
     user: "sa",
-    password: "rezorito",
-    server: "RezoRito\\RITO",
+    password: "phnam1",
+    server: "LAPTOP-22ENR373\\SQLEXPRESS",
     database: "QLBOOKSTORE",
     options: {
         trustServerCertificate: true,
@@ -42,85 +52,85 @@ sql.connect(config, (err) => {
 
 // Trang đăng nhập
 
-app.set('view engine', 'ejs');
-app.set('viewNews', path.join(__dirname, 'viewNews'));
+app.set("view engine", "ejs");
+app.set("viewNews", path.join(__dirname, "viewNews"));
 app.use(expressLayouts);
 
 // Cấu hình thư mục chứa các file tĩnh (CSS, JS)
-app.use(express.static(path.join(__dirname, 'assets')));
-app.use(express.static(path.join(__dirname, 'sqlserver')));
+app.use(express.static(path.join(__dirname, "assets")));
+app.use(express.static(path.join(__dirname, "sqlserver")));
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     const isHome = false;
-    res.render('home', { title: 'Trang chủ', isHome: isHome, layout: 'layouts/layout'});
+    res.render("home", { title: "Trang chủ", isHome: isHome, layout: "layouts/layout" });
 });
 
-app.get('/WLogin', (req, res) => {
+app.get("/WLogin", (req, res) => {
     const isHome = true;
-    res.render('DangNhap', { title: 'Đăng nhập' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("DangNhap", { title: "Đăng nhập", isHome: isHome, layout: "layouts/layout" });
 });
 
-app.get('/WRegister', (req, res) => {
+app.get("/WRegister", (req, res) => {
     const isHome = true;
-    res.render('DangKy', { title: 'Đăng ký' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("DangKy", { title: "Đăng ký", isHome: isHome, layout: "layouts/layout" });
 });
 
-app.get('/WInforUser', (req, res) => {
+app.get("/WInforUser", (req, res) => {
     const isHome = true;
-    res.render('Admin', { title: 'Thông tin tài khoản' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("Admin", { title: "Thông tin tài khoản", isHome: isHome, layout: "layouts/layout" });
 });
 
-app.get('/WCTSP', (req, res) => {
+app.get("/WCTSP", (req, res) => {
     const isHome = true;
-    res.render('CTSanPham', { title: 'Đăng ký' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("CTSanPham", { title: "Đăng ký", isHome: isHome, layout: "layouts/layout" });
 });
 
-app.get('/WSearch', (req, res) => {
+app.get("/WSearch", (req, res) => {
     const isHome = true;
-    res.render('Search', { title: 'Kết quả tìm kiếm' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("Search", { title: "Kết quả tìm kiếm", isHome: isHome, layout: "layouts/layout" });
 });
 
-app.get('/WTN', (req, res) => {
+app.get("/WTN", (req, res) => {
     const isHome = true;
-    res.render('TLThieuNhi', { title: 'Sách thiếu nhi' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("TLThieuNhi", { title: "Sách thiếu nhi", isHome: isHome, layout: "layouts/layout" });
 });
-app.get('/WVH', (req, res) => {
+app.get("/WVH", (req, res) => {
     const isHome = true;
-    res.render('TLVanHoc', { title: 'Sách văn học' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("TLVanHoc", { title: "Sách văn học", isHome: isHome, layout: "layouts/layout" });
 });
-app.get('/WTT', (req, res) => {
+app.get("/WTT", (req, res) => {
     const isHome = true;
-    res.render('TLTrinhTham', { title: 'Sách trinh thám' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("TLTrinhTham", { title: "Sách trinh thám", isHome: isHome, layout: "layouts/layout" });
 });
-app.get('/WCK', (req, res) => {
+app.get("/WCK", (req, res) => {
     const isHome = true;
-    res.render('TLChuKy', { title: 'Sách có chữ ký' , isHome: isHome, layout: 'layouts/layout'});
+    res.render("TLChuKy", { title: "Sách có chữ ký", isHome: isHome, layout: "layouts/layout" });
 });
-app.get('/WVPP', (req, res) => {
+app.get("/WVPP", (req, res) => {
     const isHome = true;
-    res.render('TLVanPP', { title: 'Văn phòng phẩm' , isHome: isHome, layout: 'layouts/layout'});
-});
-
-app.get('/WGioHang', (req, res) => {
-    const isHome = true;
-    res.render('purchaseOrder', { title: 'Giỏ hàng' , isHome: isHome, layout: false });
-});
-app.get('/WThanhToan', (req, res) => {
-    const isHome = true;
-    res.render('thanhtoan', { title: 'Thanh toán' , isHome: isHome, layout: false });
+    res.render("TLVanPP", { title: "Văn phòng phẩm", isHome: isHome, layout: "layouts/layout" });
 });
 
-app.get('/WAdmin', (req, res) => {
+app.get("/WGioHang", (req, res) => {
     const isHome = true;
-    res.render('admin/admin', { layout: 'layouts/layoutAdmin' });
+    res.render("purchaseOrder", { title: "Giỏ hàng", isHome: isHome, layout: false });
 });
-app.get('/WAdmin/WListBook', (req, res) => {
+app.get("/WThanhToan", (req, res) => {
     const isHome = true;
-    res.render('admin/product-list', { layout: 'layouts/layoutAdmin' });
+    res.render("thanhtoan", { title: "Thanh toán", isHome: isHome, layout: false });
 });
-app.get('/WAdmin/WAddBook', (req, res) => {
+
+app.get("/WAdmin", (req, res) => {
     const isHome = true;
-    res.render('admin/productCreate-admin', { layout: 'layouts/layoutAdmin' });
+    res.render("admin/admin", { layout: "layouts/layoutAdmin" });
+});
+app.get("/WAdmin/WListBook", (req, res) => {
+    const isHome = true;
+    res.render("admin/product-list", { layout: "layouts/layoutAdmin" });
+});
+app.get("/WAdmin/WAddBook", (req, res) => {
+    const isHome = true;
+    res.render("admin/productCreate-admin", { layout: "layouts/layoutAdmin" });
 });
 
 app.post("/login", async (req, res) => {
@@ -131,7 +141,7 @@ app.post("/login", async (req, res) => {
     const result = await request.query("SELECT * FROM Login WHERE UserName = @username AND PassWord = @password");
     if (result.recordset.length > 0) {
         tt_user.user = result.recordset[0];
-        c
+        c;
         tt_user.loggedIn = true;
         console.log("login", tt_user);
         res.json(tt_user);
@@ -141,7 +151,7 @@ app.post("/login", async (req, res) => {
 });
 
 ////////////////////////////////////////////////////////////
-app.post('/api/login', async (req, res) => {
+app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
     const request = new sql.Request();
     request.input("username", sql.VarChar, username);
@@ -150,19 +160,19 @@ app.post('/api/login', async (req, res) => {
     // Kiểm tra thông tin đăng nhập (giả sử đúng)
     if (result.recordset.length > 0) {
         const user = result.recordset[0];
-        const token = jwt.sign(user, SECRET_KEY, { expiresIn: '1h' });
+        const token = jwt.sign(user, SECRET_KEY, { expiresIn: "1h" });
         res.json({ token });
     } else {
-        res.status(401).json({ message: 'Tên đăng nhập hoặc mật khẩu không đúng' });
+        res.status(401).json({ message: "Tên đăng nhập hoặc mật khẩu không đúng" });
     }
 });
 
 // Middleware xác thực
 const authMiddleware = (req, res, next) => {
-    const token = req.headers.authorization?.split(' ')[1];
+    const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
-        return res.status(401).json({ message: 'Không có token, truy cập bị từ chối' });
+        return res.status(401).json({ message: "Không có token, truy cập bị từ chối" });
     }
 
     try {
@@ -170,18 +180,18 @@ const authMiddleware = (req, res, next) => {
         req.user = decoded;
         next();
     } catch (error) {
-        res.status(403).json({ message: 'Token không hợp lệ' });
+        res.status(403).json({ message: "Token không hợp lệ" });
     }
 };
 
-app.get('/api/userInfo', authMiddleware, (req, res) => {
+app.get("/api/userInfo", authMiddleware, (req, res) => {
     const user = req.user;
-    res.json({ message: 'User information retrieved successfully', user });
+    res.json({ message: "User information retrieved successfully", user });
 });
 
 // Route được bảo vệ
-app.get('/api/protected', authMiddleware, (req, res) => {
-    res.json({ message: 'Chào mừng đến với route được bảo vệ', user: req.user });
+app.get("/api/protected", authMiddleware, (req, res) => {
+    res.json({ message: "Chào mừng đến với route được bảo vệ", user: req.user });
 });
 /////////////////////////////////////////////////////
 
