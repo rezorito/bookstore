@@ -1,0 +1,237 @@
+<link href="/css/bootstrap.css" rel="stylesheet" />
+<link href="/css/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="/css/admin/sb-admin.css" rel="stylesheet" />
+<link rel="stylesheet" href="/css/userPage.css" />
+
+<div style="display: flex; justify-content: space-between">
+    <h1>Danh sách hóa đơn</h1>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 5%">ID</th>
+            <th style="width: 5%">Họ Tên</th>
+            <th style="width: 10%">Địa Chỉ</th>
+            <th style="width: 5%">Ngày Đặt</th>
+            <th style="width: 10%">Ngày Thanh Toán</th>
+            <th style="width: 5%">Tổng Tiền</th>
+            <th style="width: 5%">Action</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <tr>
+            <td style="width: 5%">01</td>
+            <td style="width: 5%">Nguyên Văn A</td>
+            <td style="width: 15%">22 GG, Quận a, Hà Nội</td>
+            <td style="width: 5%">21/11/2024</td>
+            <td style="width: 5%">22/11/2014</td>
+            <td style="width: 5%">100.000đ</td>
+            <td style="width: 5%">
+                <div class="btn-wrap">
+                    <button title="Xem" class="btn btn-info" data-toggle="modal" data-target="#detailModal">
+                        <i class="fa fa-fw fa-eye"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ul class="pagination dssp-product__pagination" id="ds_pagination"></ul>
+
+<!-- Detail Modal -->
+<div
+    class="modal fade"
+    id="detailModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog custom-modal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thông tin hóa đơn</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="product-display">
+                    <div class="product-info">
+                        <div class="product-info-detail">
+                            <p class="user-info-label">ID:</p>
+                            <p class="detail-text" id="id_Book_dt">01</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Họ Tên:</p>
+                            <p class="detail-text" id="name_Book_dt">Nguyễn Văn A</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Email:</p>
+                            <p class="detail-text" id="name_Book_dt">nguyena@example.com</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">SĐT:</p>
+                            <p class="detail-text" id="name_Book_dt">012345678</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Địa Chỉ:</p>
+                            <p class="detail-text" id="tl_Book_dt">22 GG, Quận a, Hà Nội</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Vận Chuyển:</p>
+                            <p class="detail-text" id="tl_Book_dt">Giao hàng nhanh</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Thanh Toán:</p>
+                            <p class="detail-text" id="tl_Book_dt">Thanh toán khi nhận hàng (COD)</p>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Ngày Đặt:</p>
+                            <p class="detail-text" id="sale_Book_dt">21/11/2024</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Ngày Thanh Toán:</p>
+                            <p class="detail-text" id="price_Book_dt">22/11/2024</p>
+                        </div>
+                        <div class="product-info-detail">
+                            <p class="user-info-label">Tổng Tiền:</p>
+                            <p class="detail-text" id="price_Book_dt">100.000 đ</p>
+                        </div>
+
+                        <div class="product-info-detail product-info-custom">
+                            <p class="user-info-label">Sản Phẩm Đã Đặt:</p>
+                            <div class="order-info">
+                                <!-- Item 1 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <figure class="order-item__thumb">
+                                            <img src="/img/VH2.jpg" alt="" class="order-item__img" />
+                                        </figure>
+                                        <div class="order-item__content">
+                                            <p
+                                                class="order-item__title"
+                                                title="HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ"
+                                            >
+                                                HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ
+                                            </p>
+                                            <p class="order-item__qty">x1</p>
+                                            <p class="order-item__price">103,500đ</p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Item 2 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <figure class="order-item__thumb">
+                                            <img src="/img/CK9.jpg" alt="" class="order-item__img" />
+                                        </figure>
+                                        <div class="order-item__content">
+                                            <p
+                                                class="order-item__title"
+                                                title="HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ"
+                                            >
+                                                HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ
+                                            </p>
+                                            <p class="order-item__qty">x1</p>
+                                            <p class="order-item__price">103,500đ</p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Item 3 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <figure class="order-item__thumb">
+                                            <img src="/img/CK9.jpg" alt="" class="order-item__img" />
+                                        </figure>
+                                        <div class="order-item__content">
+                                            <p
+                                                class="order-item__title"
+                                                title="HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ"
+                                            >
+                                                HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ
+                                            </p>
+                                            <p class="order-item__qty">x1</p>
+                                            <p class="order-item__price">103,500đ</p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Item 4 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <figure class="order-item__thumb">
+                                            <img src="/img/CK9.jpg" alt="" class="order-item__img" />
+                                        </figure>
+                                        <div class="order-item__content">
+                                            <p
+                                                class="order-item__title"
+                                                title="HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ"
+                                            >
+                                                HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ
+                                            </p>
+                                            <p class="order-item__qty">x1</p>
+                                            <p class="order-item__price">103,500đ</p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Item 5 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <figure class="order-item__thumb">
+                                            <img src="/img/CK9.jpg" alt="" class="order-item__img" />
+                                        </figure>
+                                        <div class="order-item__content">
+                                            <p
+                                                class="order-item__title"
+                                                title="HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ"
+                                            >
+                                                HÔM NAY MÌNH CHỈ VUI THÔI CÓ ĐƯỢC KHÔNG - SÁCH CÓ CHỮ KÝ
+                                            </p>
+                                            <p class="order-item__qty">x1</p>
+                                            <p class="order-item__price">103,500đ</p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+    class="modal fade"
+    id="deleteModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog custom-modal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn muốn xóa không?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+                <button class="btn btn-danger" id="btn_Accept_delete">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
