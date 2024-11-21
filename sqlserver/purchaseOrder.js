@@ -208,3 +208,15 @@ function fetchDeleteCartFromServer(book, userL) {
             console.error('Error:', error);
         });
 }
+
+
+document.getElementById('btn_MyAccount').addEventListener('click', async function (e) {
+    const token = localStorage.getItem('token');
+    const dataUser = await getuser();
+    console.log(dataUser)
+    if (dataUser.user.Permission == 0) {
+        window.location.href = "/WInforUser"
+    } else {
+        window.location.href = "/WAdmin"
+    }
+})

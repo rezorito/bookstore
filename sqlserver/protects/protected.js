@@ -1,29 +1,31 @@
-const checkUserLogin = () => {
+async function checkUserLogin() {
     const token = localStorage.getItem('token');
+    console.log(token);
     if (!token) {
         alert('Bạn cần đăng nhập trước!');
         window.location.href = '/WLogin';
-        return;
+        return false; // Trả về false nếu không có token
     } else {
-        fetch('http://localhost:5000/api/protected', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
-        })
-        .then(response => {
+        try {
+            const response = await fetch('http://localhost:5000/api/protected', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
             if (!response.ok) {
                 alert('Phiên đăng nhập hết hạn, vui lòng đăng nhập lại.');
                 localStorage.removeItem('token');
                 window.location.href = '/WLogin';
-            } else {
-                return true;
+                return false; // Trả về false nếu token không hợp lệ
             }
-        })
-        .catch(() => {
+
+            return true; // Trả về true nếu token hợp lệ
+        } catch (error) {
             alert('Có lỗi xảy ra, vui lòng thử lại sau.');
             window.location.href = '/WLogin';
-        });
+            return false; // Trả về false nếu có lỗi
+        }
     }
 }
-

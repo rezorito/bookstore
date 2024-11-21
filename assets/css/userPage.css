@@ -53,6 +53,7 @@
     text-align: right;
     margin-right: 20px;
     margin-bottom: 0;
+    margin-block-start: 0;
 }
 
 .user-name-textInput {
@@ -60,6 +61,10 @@
     height: 40px;
     font-size: 14px;
     padding-left: 8px;
+}
+
+.textInput-width {
+    width: 416px;
 }
 
 .user-date-input {
@@ -178,9 +183,11 @@ th {
 }
 
 .custom-modal {
-    max-width: 90%;
-    margin: auto;
-    top: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    max-width: 1077px;
 }
 
 .detail-text {
@@ -188,8 +195,11 @@ th {
 }
 
 .detail-text-area {
+    max-height: 288px;
+    overflow: auto;
     max-width: 70%;
     text-align: justify;
+    padding-right: 8px;
 }
 
 .product-info-custom {

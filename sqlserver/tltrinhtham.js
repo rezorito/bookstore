@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataTTFromServer();
-    // checkuserlogin();
 });
 
 function fetchDataTTFromServer() {

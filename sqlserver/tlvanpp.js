@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataVPPFromServer();
-    // checkuserlogin();
 });
 
 function fetchDataVPPFromServer() {

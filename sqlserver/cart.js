@@ -82,7 +82,7 @@ function fetchDeleteCartFromServer(book, dataUser) {
 }
 
 async function AddCart(book) {
-    if (checkUserLogin()) {
+    if (await checkUserLogin()) {
         var dataUser = await getuser();
         var dataCart = await fetchDataCartFromServer(dataUser.user.UserName)
         var isExist = false;

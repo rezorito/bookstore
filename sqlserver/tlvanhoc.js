@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataVHFromServer();
-    // checkuserlogin();
 });
 
 function fetchDataVHFromServer() {

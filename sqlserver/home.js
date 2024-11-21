@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataDSSPFromServer();
-    // checkuserlogin();
 });
 
 function fetchDataDSSPFromServer() {

@@ -61,9 +61,10 @@
                         <div class="product-info-detail">
                             <p class="user-info-label">Ảnh sản phẩm</p>
                             <div class="product-picture">
-                                <img src="/img/books.jpg" alt="" class="imgsp"  id="img_Book_add"/>
+                                <img src="" alt="" class="imgsp"  id="img_Book_add"/>
                             </div>
-                            <a class="changeImg">Thay đổi</a>
+                            <input type="file" id="fileInput_add" style="display: none;" accept="image/*">
+                            <a class="changeImg_add" href="">Thay đổi</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -84,7 +85,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                <a class="btn btn-primary" href="">Thêm</a>
+                <a class="btn btn-primary" href="" id="btn_Accept_add">Thêm</a>
             </div>
         </div>
     </div>
@@ -128,8 +129,8 @@
                             <div class="product-picture">
                                 <img src="/img/books.jpg" alt="" class="imgsp"  id="img_Book_ed"/>
                             </div>
-                            <input type="file" id="fileInput" style="display: none;" accept="image/*">
-                            <a class="changeImg">Thay đổi</a>
+                            <input type="file" id="fileInput_ed" style="display: none;" accept="image/*">
+                            <a class="changeImg_ed" href="">Thay đổi</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -150,7 +151,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
-                <a class="btn btn-primary" href="">Sửa</a>
+                <a class="btn btn-primary" href="" id="btn_Accept_ed">Sửa</a>
             </div>
         </div>
     </div>
@@ -213,6 +214,32 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+    class="modal fade"
+    id="deleteModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog custom-modal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn muốn xóa không?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+                <button class="btn btn-danger" id="btn_Accept_delete">Xóa</button>
             </div>
         </div>
     </div>

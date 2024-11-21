@@ -7,8 +7,10 @@ const open = require('open');
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // Middleware để xử lý JSON trong yêu cầu
+app.use(express.json());
+const fs = require('fs');
 const path = require('path');
+const multer = require("multer");
 const expressLayouts = require('express-ejs-layouts');
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'rezorito';
@@ -52,62 +54,62 @@ app.use(express.static(path.join(__dirname, 'sqlserver')));
 
 app.get('/', (req, res) => {
     const isHome = false;
-    res.render('home', { title: 'Trang chủ', isHome: isHome, layout: 'layouts/layout'});
+    res.render('home', { title: 'Trang chủ', isHome: isHome, layout: 'layouts/layout' });
 });
 
 app.get('/WLogin', (req, res) => {
     const isHome = true;
-    res.render('DangNhap', { title: 'Đăng nhập' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('DangNhap', { title: 'Đăng nhập', isHome: isHome, layout: 'layouts/layout' });
 });
 
 app.get('/WRegister', (req, res) => {
     const isHome = true;
-    res.render('DangKy', { title: 'Đăng ký' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('DangKy', { title: 'Đăng ký', isHome: isHome, layout: 'layouts/layout' });
 });
 
 app.get('/WInforUser', (req, res) => {
     const isHome = true;
-    res.render('Admin', { title: 'Thông tin tài khoản' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('Admin', { title: 'Thông tin tài khoản', isHome: isHome, layout: 'layouts/layout' });
 });
 
 app.get('/WCTSP', (req, res) => {
     const isHome = true;
-    res.render('CTSanPham', { title: 'Đăng ký' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('CTSanPham', { title: 'Đăng ký', isHome: isHome, layout: 'layouts/layout' });
 });
 
 app.get('/WSearch', (req, res) => {
     const isHome = true;
-    res.render('Search', { title: 'Kết quả tìm kiếm' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('Search', { title: 'Kết quả tìm kiếm', isHome: isHome, layout: 'layouts/layout' });
 });
 
 app.get('/WTN', (req, res) => {
     const isHome = true;
-    res.render('TLThieuNhi', { title: 'Sách thiếu nhi' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('TLThieuNhi', { title: 'Sách thiếu nhi', isHome: isHome, layout: 'layouts/layout' });
 });
 app.get('/WVH', (req, res) => {
     const isHome = true;
-    res.render('TLVanHoc', { title: 'Sách văn học' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('TLVanHoc', { title: 'Sách văn học', isHome: isHome, layout: 'layouts/layout' });
 });
 app.get('/WTT', (req, res) => {
     const isHome = true;
-    res.render('TLTrinhTham', { title: 'Sách trinh thám' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('TLTrinhTham', { title: 'Sách trinh thám', isHome: isHome, layout: 'layouts/layout' });
 });
 app.get('/WCK', (req, res) => {
     const isHome = true;
-    res.render('TLChuKy', { title: 'Sách có chữ ký' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('TLChuKy', { title: 'Sách có chữ ký', isHome: isHome, layout: 'layouts/layout' });
 });
 app.get('/WVPP', (req, res) => {
     const isHome = true;
-    res.render('TLVanPP', { title: 'Văn phòng phẩm' , isHome: isHome, layout: 'layouts/layout'});
+    res.render('TLVanPP', { title: 'Văn phòng phẩm', isHome: isHome, layout: 'layouts/layout' });
 });
 
 app.get('/WGioHang', (req, res) => {
     const isHome = true;
-    res.render('purchaseOrder', { title: 'Giỏ hàng' , isHome: isHome, layout: false });
+    res.render('purchaseOrder', { title: 'Giỏ hàng', isHome: isHome, layout: false });
 });
 app.get('/WThanhToan', (req, res) => {
     const isHome = true;
-    res.render('thanhtoan', { title: 'Thanh toán' , isHome: isHome, layout: false });
+    res.render('thanhtoan', { title: 'Thanh toán', isHome: isHome, layout: false });
 });
 
 app.get('/WAdmin', (req, res) => {
@@ -117,10 +119,6 @@ app.get('/WAdmin', (req, res) => {
 app.get('/WAdmin/WListBook', (req, res) => {
     const isHome = true;
     res.render('admin/product-list', { layout: 'layouts/layoutAdmin' });
-});
-app.get('/WAdmin/WAddBook', (req, res) => {
-    const isHome = true;
-    res.render('admin/productCreate-admin', { layout: 'layouts/layoutAdmin' });
 });
 
 app.post("/login", async (req, res) => {
@@ -183,6 +181,38 @@ app.get('/api/userInfo', authMiddleware, (req, res) => {
 app.get('/api/protected', authMiddleware, (req, res) => {
     res.json({ message: 'Chào mừng đến với route được bảo vệ', user: req.user });
 });
+/////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////
+
+// Cấu hình Multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const uploadDir = path.join(__dirname, "assets/img_sql"); // Đảm bảo đường dẫn đúng
+        cb(null, uploadDir);
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Đặt tên file duy nhất
+    },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/upload", upload.single("image"), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "Không có file nào được chọn." });
+        }
+        const finalFileName = req.file.filename;
+        const imagePath = "/img_sql/" + finalFileName;
+        res.json({ message: "Ảnh đã được lưu thành công!", fileName: finalFileName, imagePath });
+    } catch (error) {
+        console.error("Lỗi:", error);
+        res.status(500).json({ error: "Đã xảy ra lỗi khi lưu ảnh." });
+    }
+});
+
 /////////////////////////////////////////////////////
 
 app.post("/add-user", (req, res) => {
@@ -289,64 +319,110 @@ app.get("/ctsp", (req, res) => {
 });
 
 //Thêm/Sửa/Xóa sản phẩm
-app.post("/add-product", (req, res) => {
-    const { BookID, BookName, BookPrice, BookSale, BookContent, BookImage, TheLoaiID } = req.body;
-    const request = new sql.Request();
-    request.input("BookID", sql.Char, BookID);
-    request.input("BookName", sql.NVarChar, BookName);
-    request.input("BookPrice", sql.Float, BookPrice);
-    request.input("BookSale", sql.Float, BookSale);
-    request.input("BookContent", sql.NVarChar, BookContent);
-    request.input("BookImage", sql.VarChar, BookImage);
-    request.input("TheLoaiID", sql.Char, TheLoaiID);
-    request.query(
-        "INSERT INTO Book (ID, Name, Price, Category_ID, Sale, Content, Image) VALUES (@BookID, @BookName, @BookPrice, @TheLoaiID, @BookSale, @BookContent, @BookImage);",
-        (err, result) => {
-            if (err) {
-                console.error("Lỗi truy vấn:", err);
-                res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." }); // Send error as JSON
-                return;
-            }
-            res.json({ message: "Product added successfully" }); // Send success message as JSON
+app.post("/add-product", upload.single("image"), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "Không có file nào được chọn." });
         }
-    );
+        const finalFileName = req.file.filename;
+        const imagePath = "/img_sql/" + finalFileName;
+        const bookData = JSON.parse(req.body.book);
+        const { BookID, BookName, BookPrice, BookSale, BookContent, TheLoaiID } = bookData;
+        const request = new sql.Request();
+        request.input("BookID", sql.Char, BookID);
+        request.input("BookName", sql.NVarChar, BookName);
+        request.input("BookPrice", sql.Float, BookPrice);
+        request.input("BookSale", sql.Float, BookSale);
+        request.input("BookContent", sql.NVarChar, BookContent);
+        request.input("BookImage", sql.VarChar, imagePath);
+        request.input("TheLoaiID", sql.Char, TheLoaiID);
+        request.query(
+            "INSERT INTO Book (ID, Name, Price, Category_ID, Sale, Content, Image) VALUES (@BookID, @BookName, @BookPrice, @TheLoaiID, @BookSale, @BookContent, @BookImage);",
+            (err, result) => {
+                if (err) {
+                    console.error("Lỗi truy vấn:", err);
+                    res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." }); // Send error as JSON
+                    return;
+                }
+                res.json({ message: "Product added successfully" }); // Send success message as JSON
+            }
+        );
+    } catch (error) {
+        console.error("Lỗi:", error);
+        res.status(500).json({ error: "Đã xảy ra lỗi khi lưu ảnh." });
+    }
 });
 
-app.put("/fix-product", (req, res) => {
-    const { BookID, BookName, BookPrice, BookSale, BookContent, BookImage, TheLoaiID } = req.body;
-    const request = new sql.Request();
-    request.input("BookID", sql.Char, BookID);
-    request.input("BookName", sql.NVarChar, BookName);
-    request.input("BookPrice", sql.Float, BookPrice);
-    request.input("BookSale", sql.Float, BookSale);
-    request.input("BookContent", sql.NVarChar, BookContent);
-    request.input("BookImage", sql.VarChar, BookImage);
-    request.input("TheLoaiID", sql.Char, TheLoaiID);
-    request.query(
-        "UPDATE Book SET Name = @BookName, Price = @BookPrice, Sale = @BookSale, Content = @BookContent, Image = @BookImage, Category_ID = @TheLoaiID WHERE ID = @BookID; ",
-        (err, recordset) => {
-            if (err) {
-                console.error("Lỗi truy vấn:", err);
-                res.status(500).send("Lỗi truy vấn cơ sở dữ liệu.");
-                return;
-            }
-            res.send("Product fix successfully");
+app.put("/fix-product", upload.single("image"), (req, res) => {
+    try {
+        const bookData = JSON.parse(req.body.book);
+        const image_delete = req.body.image_delete;
+        let imagePath = image_delete;
+        if (req.file) {
+            const folderPath = path.join(__dirname, 'assets');
+            const filePath = path.join(folderPath, image_delete);
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.error('Lỗi khi xóa file:', err);
+                }
+            });
+            //Ảnh mới
+            const finalFileName = req.file.filename;
+            imagePath = "/img_sql/" + finalFileName;
+
         }
-    );
+        const { BookID, BookName, BookPrice, BookSale, BookContent, TheLoaiID } = bookData;
+        const request = new sql.Request();
+        request.input("BookID", sql.Char, BookID);
+        request.input("BookName", sql.NVarChar, BookName);
+        request.input("BookPrice", sql.Float, BookPrice);
+        request.input("BookSale", sql.Float, BookSale);
+        request.input("BookContent", sql.NVarChar, BookContent);
+        request.input("BookImage", sql.VarChar, imagePath);
+        request.input("TheLoaiID", sql.Char, TheLoaiID);
+        request.query(
+            "UPDATE Book SET Name = @BookName, Price = @BookPrice, Sale = @BookSale, Content = @BookContent, Image = @BookImage, Category_ID = @TheLoaiID WHERE ID = @BookID; ",
+            (err, recordset) => {
+                if (err) {
+                    console.error("Lỗi truy vấn:", err);
+                    res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
+                    return;
+                }
+                res.json({ message: "Product fix successfully", image_delete });
+            }
+        );
+    } catch (error) {
+        console.error("Lỗi:", error);
+        res.status(500).json({ error: "Đã xảy ra lỗi khi lưu ảnh." });
+    }
 });
 
 app.delete("/delete-product", (req, res) => {
-    const BookID = req.body.BookID;
-    const request = new sql.Request(); // Khởi tạo đối tượng request
-    request.input("BookID", sql.Char, BookID);
-    request.query("DELETE FROM Book WHERE ID = @BookID;", (err, result) => {
-        if (err) {
-            console.error("Lỗi truy vấn:", err);
-            res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
-            return;
-        }
-        res.json({ message: "Product deleted successfully" });
-    });
+    try {
+        const BookID = req.body.bookID;
+        const image_delete = req.body.image_delete;
+        const folderPath = path.join(__dirname, 'assets');
+        const filePath = path.join(folderPath, image_delete);
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error('Lỗi khi xóa file:', err);
+            }
+        });
+
+        const request = new sql.Request();
+        request.input("BookID", sql.Char, BookID);
+        request.query("DELETE FROM Book WHERE ID = @BookID;", (err, result) => {
+            if (err) {
+                console.error("Lỗi truy vấn:", err);
+                res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
+                return;
+            }
+            res.json({ message: "Product deleted successfully" });
+        });
+    } catch (error) {
+        console.error("Lỗi:", error);
+        res.status(500).json({ error: "Đã xảy ra lỗi khi lưu ảnh." });
+    }
 });
 
 //The loai

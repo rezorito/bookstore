@@ -49,5 +49,4 @@ checklogin.addEventListener('click', async function (e) {
 });
 
 document.addEventListener('DOMContentLoaded', function (e) {
-    checkUserLogin();
 })
