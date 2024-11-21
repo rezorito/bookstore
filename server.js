@@ -111,6 +111,10 @@ app.get('/WThanhToan', (req, res) => {
     const isHome = true;
     res.render('thanhtoan', { title: 'Thanh toán', isHome: isHome, layout: false });
 });
+app.get('/WDonMua', (req, res) => {
+    const isHome = true;
+    res.render('donMua', { title: 'Đơn mua', isHome: isHome, layout: false });
+});
 
 app.get('/WAdmin', (req, res) => {
     const isHome = true;

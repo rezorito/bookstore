@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Giỏ hàng</title>
+        <title><%= title %></title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
         <link rel="stylesheet" href="/css/base.css" />
         <link rel="stylesheet" href="/css/main.css" />
@@ -16,7 +16,6 @@
         />
         <script src="/js/main.js" defer></script>
         <script src="/protects/protected.js"></script>
-
     </head>
 
     <body>
@@ -38,11 +37,13 @@
                                 </a>
                             </li>
                         </ul>
-    
+
                         <ul class="header__navbar-list" id="UnLoginUser">
-                            <a href="/WLogin"
-                                class="header__navbar-title header__navbar-item header__navbar-item--separate">Đăng
-                                nhập</a>
+                            <a
+                                href="/WLogin"
+                                class="header__navbar-title header__navbar-item header__navbar-item--separate"
+                                >Đăng nhập</a
+                            >
                             <a href="/WRegister" class="header__navbar-title header__navbar-item">Đăng ký</a>
                         </ul>
                         <ul class="header__navbar-list" id="LoginUser">
@@ -80,28 +81,135 @@
                 </div>
             </div>
         </header>
-        <div class="app__container1">
-            <div class="grid">
-                <div class="content2 content1">
-                    <div class="cart-info">
-                        <table class="cart-table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Sản Phẩm</th>
-                                    <th>Đơn Giá</th>
-                                    <th>Số Lượng</th>
-                                    <th>Số Tiền</th>
-                                    <th>Thao Tác</th>
-                                </tr>
-                            </thead>
-                            <tbody id="DSOrder"></tbody>
-                        </table>
+        <div class="app__container">
+            <div class="order">
+                <div class="grid">
+                    <div class="order__wrap">
+                        <div class="tabs">
+                            <div class="tabs__item tabs__item--active">Tất cả</div>
+                            <div class="tabs__item">Chờ thanh toán <span>(1)</span></div>
+                            <div class="tabs__item">Vận chuyển</div>
+                            <div class="tabs__item">Chờ giao hàng</div>
+                            <div class="tabs__item">Hoàn thành</div>
+                            <div class="tabs__item">Đã hủy</div>
+                            <div class="tabs__item">Trả hàng/Hoàn tiền</div>
+                        </div>
+                        <div class="order-list">
+                            <div class="order-list__tab order-list__tab--active">
+                                <!-- Order 1 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="/img/CK9.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item__total">
+                                        <div class="order-item__total-price">
+                                            <span>Thành tiền:</span>
+                                            <span>79.000đ</span>
+                                        </div>
+                                        <button class="order-item__btn">Hủy Đơn Hàng</button>
+                                    </div>
+                                </article>
+                                <!-- Order 2 -->
+                                <article class="order-item">
+                                    <!-- Item 1 -->
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="/img/VH2.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <!-- Item 2 -->
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="/img/CK16.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 2</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item__total">
+                                        <div class="order-item__total-price">
+                                            <span>Thành tiền:</span>
+                                            <span>79.000đ</span>
+                                        </div>
+                                        <button class="order-item__btn">Hủy Đơn Hàng</button>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="order-list__tab">
+                                <!-- Order 1 -->
+                                <article class="order-item">
+                                    <div class="order-item__info">
+                                        <div class="order-item__left">
+                                            <figure class="order-item__thumb">
+                                                <img src="/img/VH4.jpg" alt="" class="order-item__img" />
+                                            </figure>
+                                            <div class="order-item__title">
+                                                <p class="order-item__text">
+                                                    Có Người Sực Tỉnh Cơn Mơ - Sách Có Chữ Ký
+                                                </p>
+                                                <p class="order-item__text">Số lượng: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="order-item__price">
+                                            <span class="order-item__price--old">100.000đ</span>
+                                            <span class="order-item__price--current">79.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="order-item__total">
+                                        <div class="order-item__total-price">
+                                            <span>Thành tiền:</span>
+                                            <span>79.000đ</span>
+                                        </div>
+                                        <button class="order-item__btn">Hủy Đơn Hàng</button>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="order-list__tab">
+                                <div class="order-list__empty">
+                                    <img src="/img/empty_order.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="order-list__tab">4</div>
+                            <div class="order-list__tab">5</div>
+                            <div class="order-list__tab">6</div>
+                            <div class="order-list__tab">7</div>
+                        </div>
                     </div>
-                </div>
-                <div class="cart-summary">
-                    <div class="cart-summary__total">Tổng tiền : <span id="orderTotal">0</span>.000<sup>đ</sup></div>
-                    <button class="cart-summary__checkout-btn" id="ShowPayment">Thanh toán</button>
                 </div>
             </div>
         </div>
@@ -217,5 +325,6 @@
         <script src="/purchaseOrder.js"></script>
         <script src="/checklogin.js"></script>
         <script src="/controler_search.js"></script>
+        <script src="/js/donMua.js"></script>
     </body>
 </html>
