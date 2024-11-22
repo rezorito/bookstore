@@ -2,8 +2,18 @@ const openPopupBtn = document.getElementById('open-popupqr-btn');
 const closePopupBtn = document.getElementById('close-popupqr-btn');
 const popup = document.getElementById('popupqr');
 const bodyOverlay = document.getElementById('body-overlay');
-const priceTotal = document.getElementById('price-total')
 const qrcode = document.querySelector('.qrcodeimg')
+
+const checkInforUser = () => {
+    const nameUser = document.getElementById('nameUser').value
+    const emailUser = document.getElementById('emailUser').value
+    const sdtUser = document.getElementById('sdtUser').value
+    const addressUser = document.getElementById('addressUser').value
+    if (nameUser.trim() == "" || emailUser.trim() == "" || sdtUser.trim() == "" || addressUser.trim() == "") {
+        return false;
+    }
+    return true;
+}
 const Bank = {
     Bank_ID: 'MB',
     Bank_nummber: '221003160903'
@@ -19,28 +29,35 @@ function generateRandomString() {
     return result
 }
 
-openPopupBtn.addEventListener('click', function (e) {
-    var payBankRadio = document.getElementById("pay_bank");
-    if (payBankRadio.checked) {
-        var verificationCodes = generateRandomString()
-        document.getElementById('codext').innerHTML = verificationCodes;
-        let priceqrTotal = priceTotal.innerText * 1000;
-        document.getElementById('TotalPayment').innerHTML = priceTotal.innerText;
-        let QR = `https://img.vietqr.io/image/${Bank.Bank_ID}-${Bank.Bank_nummber}-qr_only.png?amount=${priceqrTotal}&addInfo=PAYMENT MA: ${verificationCodes}`;
-        console.log(verificationCodes);
-        console.log(QR);
-        qrcode.src = QR;
-        popup.style.display = 'block';
-        bodyOverlay.style.display = 'block';
-        document.body.classList.add('opened');
-        setTimeout(() => {
-            setInterval(() => {
-                checkPaid(priceqrTotal, verificationCodes);
-            }, 1000);
-        }, 20000);
+openPopupBtn.addEventListener('click', async function (e) {
+    if (!checkInforUser()) {
+        alert("Cần nhập đầy đủ thông tin trước")
     } else {
-        alert('Đặt hàng thành công!')
-        window.location.href = "/"
+        var payBankRadio = document.getElementById("pay_bank");
+        if (payBankRadio.checked) {
+            var verificationCodes = generateRandomString()
+            document.getElementById('codext').innerHTML = verificationCodes;
+            let priceqrTotal = priceTotal.innerText * 1000;
+            document.getElementById('TotalPayment').innerHTML = priceTotal.innerText;
+            let QR = `https://img.vietqr.io/image/${Bank.Bank_ID}-${Bank.Bank_nummber}-qr_only.png?amount=${priceqrTotal}&addInfo=PAYMENT MA: ${verificationCodes}`;
+            console.log(verificationCodes);
+            console.log(QR);
+            qrcode.src = QR;
+            popup.style.display = 'block';
+            bodyOverlay.style.display = 'block';
+            document.body.classList.add('opened');
+            setTimeout(() => {
+                setInterval(() => {
+                    checkPaid(priceqrTotal, verificationCodes);
+                }, 1000);
+            }, 20000);
+        } else {
+            // const rawdata = sessionStorage.getItem('totalDSPayment');
+            const rawdata = sessionStorage.getItem('ListBookPayment');
+            const data = JSON.parse(rawdata);
+            const dataBookID = data.map(item => item.BookID.trim());
+            fetchSuccessPayFromServer(dataBookID);
+        }
     }
 });
 
@@ -93,37 +110,64 @@ function closePopup() {
     document.getElementById("popup").style.display = "none";
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     var popup = document.getElementById("popup");
     if (event.target === popup) {
         popup.style.display = "none";
     }
 }
 
-async function fetchSuccessPayFromServer() {
-    var dataUser = await getuser();
-    var data = await LoadSP();
-    const formData = {
-        UserName: dataUser.user.UserName,
-        Book_IDS: data
-    };
-    await fetch('http://localhost:5000/successPay', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
+async function fetchSuccessPayFromServer(dataBookID) {
+    try {
+        const nameUser = document.getElementById('nameUser').value
+        const emailUser = document.getElementById('emailUser').value
+        const sdtUser = document.getElementById('sdtUser').value
+        const addressUser = document.getElementById('addressUser').value
+        const priceTotal = document.getElementById('price-total').innerHTML
+        let PthVC = PthTT = 0
+        if (document.getElementById("ghht").checked) {
+            PthVC = 1;
+        }
+        if (document.getElementById("pay_bank").checked) {
+            PthTT = 1;
+        }
+        var dataUser = await getuser();
+        const formData = {
+            UserName: dataUser.user.UserName,
+            Book_IDS: dataBookID,
+            inforUser: {
+                nameUser: nameUser.trim(),
+                emailUser: emailUser.trim(),
+                sdtUser: sdtUser.trim(),
+                addressUser: addressUser.trim(),
+            },
+            priceTotal,
+            PthVC,
+            PthTT,
+        };
+        await fetch('http://localhost:5000/successPay', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.message == "Successfully") {
+                    alert("Đặt hàng thành công!")
+                    window.location.href = "/"
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    } catch (e) {
+        alert(e)
+    }
 }

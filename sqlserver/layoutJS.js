@@ -33,7 +33,9 @@ async function loadCart() {
             const cartList = document.getElementById('cartList');
             cartList.innerHTML = ''
             document.getElementById('countgiohang').innerHTML = 0;
+            document.getElementById('text_TotalPay').style.display = "none";
             document.getElementById('totalPay').innerHTML = 0;
+            document.getElementById('isShowCart').style.display = "none";
             const cartItemImage = document.createElement('img');
             cartItemImage.src = '/img/empty_cart.png';
             cartItemImage.alt = '';
@@ -50,6 +52,8 @@ async function loadCart() {
                 var Element = createElementCart(item);
                 cartList.appendChild(Element);
             });
+            document.getElementById('text_TotalPay').style.display = "flex";
+            document.getElementById('isShowCart').style.display = "flex";
             document.getElementById('countgiohang').innerHTML = count;
             document.getElementById('totalPay').innerHTML = totalpay + '.000';
         }
@@ -128,7 +132,7 @@ document.getElementById('logOut').addEventListener('click', function (e) {
 })
 
 document.getElementById('showCart').addEventListener('click', async function (e) {
-    window.location.href = '/WGioHang'
+    window.location.href = "/WGioHang"
 })
 
 document.getElementById('btn_MyAccount').addEventListener('click', async function (e) {

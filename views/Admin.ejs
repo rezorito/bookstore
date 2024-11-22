@@ -9,45 +9,50 @@
         </div>
         <div class="user-info-detail">
             <p class="user-info-label">Tên</p>
-            <input class="user-name-textInput" type="text">
+            <input class="user-name-textInput" type="text" id="user_name">
         </div>
         <div class="user-info-detail">
             <p class="user-info-label">Email</p>
-            <p class="user-info-output">ab***********@gmail.com</p>
-            <a href="#">Thay đổi</a>
+            <input class="user-name-textInput" type="email" id="user_email">
         </div>
         <div class="user-info-detail">
             <p class="user-info-label">Số điện thoại</p>
-            <p class="user-info-output">********78</p>
-            <a href="#">Thay đổi</a>
+            <input class="user-name-textInput" type="number" id="user_sdt">
+        </div>
+        <div class="user-info-detail">
+            <p class="user-info-label">Địa chỉ</p>
+            <input class="user-name-textInput" type="text" id="user_address">
         </div>
         <div class="user-info-detail">
             <p class="user-info-label">Giới tính</p>
-            <input class="user-radio-input" type="radio" name="options">
+            <input class="user-radio-input" type="radio" name="options" id="user_gt_1">
             <label class="user-radio-input-label">Nam</label>
-            <input class="user-radio-input" type="radio" name="options">
+            <input class="user-radio-input" type="radio" name="options" id="user_gt_2">
             <label class="user-radio-input-label">Nữ</label>
-            <input class="user-radio-input" type="radio" name="options">
+            <input class="user-radio-input" type="radio" name="options" id="user_gt_0">
             <label class="user-radio-input-label">Khác</label>
         </div>
         <div class="user-info-detail">
             <p class="user-info-label">Ngày sinh</p>
-            <input class="user-date-input" type="date">
+            <input class="user-date-input" type="date" id="user_date">
         </div>
         <div class="user-info-detail">
             <p class="user-info-label"></p>
-            <button class="user-button">Lưu</button>
+            <button class="user-button" id="btn_Accept_Save">Lưu</button>
         </div>
     </div>
-    <div class="user-avatar">
+    <!-- <div class="user-avatar">
         <div class="user-avatar-img">
-            <img src="/img/avatar.png" alt="">
+            <img src="/img/avatar.png" alt="" id="user_avatar">
         </div>
-        <button class="user-button">Chọn Ảnh</button>
+        <input type="file" id="fileInputImg" style="display: none;" accept="image/*">
+        <button class="user-button" id="btn_change_img">Chọn Ảnh</button>
         <p>Dụng lượng file tối đa 1 MB
             <br>Định dạng:.JPEG, .PNG
         </p>
-    </div>
+    </div> -->
 </div>
 
 <script src="/admin.js"></script>
+<script src="/checklogin.js"></script>
+

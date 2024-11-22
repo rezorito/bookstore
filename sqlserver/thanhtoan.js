@@ -1,32 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
     loadPaySP();
-    checkUserLogin();
-    showLogin();
 });
 
-const showLogin = async () => {
-    const token = localStorage.getItem('token');
-    var unLoginElements = document.getElementById('UnLoginUser')
-    var LoginElements = document.getElementById('LoginUser')
-    if (!token) {
-        unLoginElements.style.display = 'block'
-        LoginElements.style.display = 'none'
-        cartShow.style.display = 'none'
-    } else {
-        const dataUser = await getuser();
-        unLoginElements.style.display = 'none'
-        LoginElements.style.display = 'block'
-        document.getElementById("UserName_LG").innerText = dataUser.user.UserName;
-        alert("ha")
-    }
-}
-
 function LoadSP() {
-    var urlParams = new URLSearchParams(window.location.search);
-    var encodedData = urlParams.get('data');
-    var jsonData = decodeURIComponent(encodedData);
+    // var urlParams = new URLSearchParams(window.location.search);
+    // var encodedData = urlParams.get('data');
+    // var jsonData = decodeURIComponent(encodedData);
+    // console.log(jsonData);
+    // sessionStorage.setItem('totalDSPayment', jsonData);
+    var jsonData = sessionStorage.getItem('ListBookPayment');
     var data = JSON.parse(jsonData); 
-    sessionStorage.setItem('totalDSPayment', data);
+    console.log(data);
     return data;
 };
 
@@ -66,7 +50,7 @@ async function loadPaySP() {
         console.log(dataUser.user.UserName);
         var dataPay = await LoadSP()
         if (dataPay == null) {
-
+            
         } else {
             const payList = document.getElementById('TTSPPay');
             payList.innerHTML = ''

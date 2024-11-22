@@ -1,25 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    checkUserLogin();
     LoadOrderSP();
-    showLogin();
+    ListBookPay = [];
 });
-
-const showLogin = async () => {
-    const token = localStorage.getItem('token');
-    var unLoginElements = document.getElementById('UnLoginUser')
-    var LoginElements = document.getElementById('LoginUser')
-    if (!token) {
-        unLoginElements.style.display = 'block'
-        LoginElements.style.display = 'none'
-        cartShow.style.display = 'none'
-    } else {
-        const dataUser = await getuser();
-        unLoginElements.style.display = 'none'
-        LoginElements.style.display = 'block'
-        document.getElementById("UserName_LG").innerText = dataUser.user.UserName;
-        alert("ha")
-    }
-}
+let ListBookPay = [];
 
 async function fetchDataPaySPFromServer(UserName) {
     const formData = {
@@ -54,7 +37,6 @@ async function LoadOrderSP() {
     if (dataUser.user == null) {
         alert("Lỗi : Hãy đăng nhập trước!")
     } else {
-        console.log(dataUser.user.UserName);
         var dataPay = await fetchDataPaySPFromServer(dataUser.user.UserName)
         if (dataPay == null) {
             const payList = document.getElementById('DSOrder');
@@ -81,15 +63,20 @@ function createCartItemRow(book) {
     checkbox.type = 'checkbox';
     checkbox.className = 'product-checkbox';
     checkbox.name = book.BookID;
-    checkbox.addEventListener('change', function(event) {
+    checkbox.addEventListener('change', function (event) {
         if (event.target.checked) {
             var price = document.getElementById('orderTotal').innerHTML;
             var Total = parseInt(price) + parseFloat(book.BookPrice);
             document.getElementById('orderTotal').innerHTML = Total;
+            ListBookPay.push(book)
         } else {
             var price = document.getElementById('orderTotal').innerHTML;
             var Total = parseInt(price) - parseFloat(book.BookPrice);
             document.getElementById('orderTotal').innerHTML = Total;
+            const index = ListBookPay.indexOf(book);
+            if (index > -1) {
+                ListBookPay.splice(index, 1);
+            }
         }
     });
     checkboxCell.appendChild(checkbox);
@@ -162,22 +149,24 @@ var btnPay = document.getElementById('ShowPayment').addEventListener('click', as
         alert('Ko có sản phẩm trong giỏ hàng!');
     } else {
         const checkboxes = document.querySelectorAll('.product-checkbox');
-        var DSPayment = [];
+        // var DSPayment = [];
         var count = 0;
         checkboxes.forEach(function (checkbox) {
             if (checkbox.checked) {
-                var book = dataPay.filter(book => book.BookID === checkbox.name);
-                console.log(book)
-                DSPayment.push(book[0])
+                // var book = dataPay.filter(book => book.BookID === checkbox.name);
+                // console.log(book)
+                // DSPayment.push(book[0])
                 count++;
             }
         });
         if (count == 0) {
             alert("Bạn chưa chọn sản phẩm để thanh toán!")
         } else {
-            var jsonData = JSON.stringify(DSPayment);
-            var encodedData = encodeURIComponent(jsonData);
-            window.location.href = `/WThanhToan?data=${encodedData}`
+            // var jsonData = JSON.stringify(DSPayment);
+            // var encodedData = encodeURIComponent(jsonData);
+            // window.location.href = `/WThanhToan?data=${encodedData}`
+            sessionStorage.setItem("ListBookPayment", JSON.stringify(ListBookPay))
+            window.location.href = `/WThanhToan`
         }
     }
 })

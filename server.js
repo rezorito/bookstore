@@ -105,15 +105,15 @@ app.get('/WVPP', (req, res) => {
 
 app.get('/WGioHang', (req, res) => {
     const isHome = true;
-    res.render('purchaseOrder', { title: 'Giỏ hàng', isHome: isHome, layout: false });
+    res.render('purchaseOrder', { title: 'Giỏ hàng', isHome: isHome, layout: 'layouts/layoutOrder' });
 });
 app.get('/WThanhToan', (req, res) => {
     const isHome = true;
-    res.render('thanhtoan', { title: 'Thanh toán', isHome: isHome, layout: false });
+    res.render('thanhtoan', { title: 'Thanh toán', isHome: isHome, layout: 'layouts/layoutOrder' });
 });
 app.get('/WDonMua', (req, res) => {
     const isHome = true;
-    res.render('donMua', { title: 'Đơn mua', isHome: isHome, layout: false });
+    res.render('donMua', { title: 'Đơn mua', isHome: isHome, layout: 'layouts/layoutOrder' });
 });
 
 app.get('/WAdmin', (req, res) => {
@@ -124,22 +124,13 @@ app.get('/WAdmin/WListBook', (req, res) => {
     const isHome = true;
     res.render('admin/product-list', { layout: 'layouts/layoutAdmin' });
 });
-
-app.post("/login", async (req, res) => {
-    const { username, password } = req.body;
-    const request = new sql.Request();
-    request.input("username", sql.VarChar, username);
-    request.input("password", sql.VarChar, password);
-    const result = await request.query("SELECT * FROM Login WHERE UserName = @username AND PassWord = @password");
-    if (result.recordset.length > 0) {
-        tt_user.user = result.recordset[0];
-        c
-        tt_user.loggedIn = true;
-        console.log("login", tt_user);
-        res.json(tt_user);
-    } else {
-        res.json(tt_user);
-    }
+app.get('/WAdmin/WListOrder', (req, res) => {
+    const isHome = true;
+    res.render('admin/order-list', { layout: 'layouts/layoutAdmin' });
+});
+app.get('/WAdmin/WListBill', (req, res) => {
+    const isHome = true;
+    res.render('admin/bill-list', { layout: 'layouts/layoutAdmin' });
 });
 
 ////////////////////////////////////////////////////////////
@@ -295,6 +286,40 @@ app.get("/dssp", (req, res) => {
             res.json(recordset.recordset);
         }
     );
+});
+app.post("/get_inforUser", (req, res) => {
+    const { UserName } = req.body;
+    const request = new sql.Request();
+    request.input("UserName", sql.VarChar, UserName);
+    request.query("SELECT Name, Email, SDT, Address, Gender, CONVERT(VARCHAR, Date, 23) as Date, Image From Infor_user WHERE User_ID = @UserName;", (err, recordset) => {
+        if (err) {
+            console.error("Lỗi truy vấn:", err);
+            return res.status(500).send("Lỗi truy vấn cơ sở dữ liệu.");
+        }
+        res.json(recordset.recordset);
+    });
+});
+
+app.post("/update_inforUser", (req, res) => {
+    const { User_ID, Name, Email, SDT, Address, Gender, Date
+        // ,Image 
+    } = req.body;
+    const request = new sql.Request();
+    request.input("User_ID", sql.VarChar, User_ID);
+    request.input("Name", sql.NVarChar, Name);
+    request.input("Email", sql.VarChar, Email);
+    request.input("SDT", sql.VarChar, SDT);
+    request.input("Date", sql.Date, Date);
+    request.input("Address", sql.NVarChar, Address);
+    request.input("Gender", sql.NVarChar, Gender);
+    request.query("UPDATE Infor_user Set Name = @Name, Email = @Email, SDT = @SDT, Address = @Address, Gender = @Gender, Date = @Date WHERE User_ID = @User_ID;", (err, recordset) => {
+        if (err) {
+            console.error("Lỗi truy vấn:", err);
+            res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
+            return;
+        }
+        res.json({ message: "Infor fix successfully" });
+    });
 });
 
 //Trang chi tiết sản phẩm
@@ -659,28 +684,144 @@ app.delete("/delete-cart", (req, res) => {
     });
 });
 
-app.delete("/successPay", (req, res) => {
-    const { UserName, Book_IDS } = req.body;
+function generateRandomID() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i <= 7; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result
+}
+
+// PT Vận chuyển
+// 0 - Nhanh
+// 1- Hỏa tốc
+// PT Thanh toán
+// 0 - trả khi nhận
+// 1 - chuyển khoản
+// Tình trạng (TT)
+// 0 - Hủy thanh toán
+// 1 - Chờ xác nhận
+// 2 - Đang vận chuyển
+// 3 - Đã thanh toán
+app.post("/successPay", async (req, res) => {
+    const { UserName, Book_IDS, inforUser, priceTotal, PthVC, PthTT } = req.body;
+    const timestamp = Date.now();
+    const date = new Date(timestamp);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0, cộng thêm 1
+    const day = String(date.getDate()).padStart(2, '0'); // Đảm bảo 2 chữ số cho ngày
+    const formattedDate = `${year}-${month}-${day}`;
 
     if (!Array.isArray(Book_IDS) || Book_IDS.length === 0) {
         res.status(400).json({ message: "Invalid Book_IDS array." });
         return;
     }
     const request = new sql.Request();
-    // Xây dựng danh sách tham số cho Book_IDs
-    const params = Book_IDS.map((id, index) => `'${Book_IDS[index].BookID}'`).join(", ");
-    const sqlQuery = `DELETE FROM Cart WHERE UserName = @UserName AND Book_ID IN (${params});`;
-    // Đưa các giá trị vào request
+    const dataBookID = Book_IDS.map(item => item);
+    const bookIDsString = dataBookID.map(id => `'${id}'`).join(',');
+    const IDHD = generateRandomID();
+    const sqlQuery1 = `INSERT INTO [Order] (ID, User_ID, Date, Price, PthVC, PthTT, TT, Address, UserName, Email, SDT) VALUES (@IDHD, @UserName, '${formattedDate}', @priceTotal, @PthVC, @PthTT, 1, @Address, @nameUser, @Email, @SDT);`
+    const sqlQuery2 = `INSERT INTO [Order_detail] (Order_ID, Book_ID) VALUES` + dataBookID.map(id => `(@IDHD, '${id}')`).join(',');
+    const sqlQuery3 = `DELETE FROM Cart WHERE UserName = @UserName AND Book_ID IN (${bookIDsString});`;
+    request.input("IDHD", sql.Char, IDHD);
     request.input("UserName", sql.VarChar, UserName);
+    request.input("priceTotal", sql.Float, priceTotal);
+    request.input("PthVC", sql.Int, PthVC);
+    request.input("PthTT", sql.Int, PthTT);
+    request.input("nameUser", sql.NVarChar, inforUser.nameUser);
+    request.input("Email", sql.VarChar, inforUser.emailUser);
+    request.input("SDT", sql.VarChar, inforUser.sdtUser);
+    request.input("Address", sql.NVarChar, inforUser.addressUser);
+    try {
+        const result1 = await request.query(sqlQuery1);
+        const result2 = await request.query(sqlQuery2);
+        const result3 = await request.query(sqlQuery3);
 
-    request.query(sqlQuery, (err, result) => {
+        res.json({ message: "Successfully" });
+    } catch (err) {
+        console.error("Lỗi truy vấn:", err);
+        res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
+    }
+});
+
+//Admin Đơn hàng / Hóa đơn
+app.get("/list_order", (req, res) => {
+    const request = new sql.Request();
+    request.query(
+        `SELECT ID, UserName, Email, SDT, Address, PthVC, PthTT, CONVERT(VARCHAR, Date, 23) as Date, CONVERT(VARCHAR, DatePay, 23) as DatePay, Price, TT FROM [Order] WHERE TT != 3`,
+        (err, recordset) => {
+            if (err) {
+                console.error("Lỗi truy vấn:", err);
+                res.status(500).send("Lỗi truy vấn cơ sở dữ liệu.");
+                return;
+            }
+            res.json(recordset.recordset);
+        }
+    );
+});
+
+app.post("/fix_tt_order", (req, res) => {
+    const { ID, TT } = req.body;
+    const request = new sql.Request();
+    request.input("ID", sql.VarChar, ID);
+    request.input("TT", sql.Int, TT);
+    let formattedDate = null;
+    if (TT == 3) {
+        const timestamp = Date.now();
+        const date = new Date(timestamp);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0, cộng thêm 1
+        const day = String(date.getDate()).padStart(2, '0'); // Đảm bảo 2 chữ số cho ngày
+        formattedDate = `${year}-${month}-${day}`;
+    }
+    request.input('DatePay', sql.Date, formattedDate);
+    request.query(`UPDATE [Order] SET TT = @TT, DatePay = @DatePay WHERE ID = @ID;`, (err, result) => {
         if (err) {
             console.error("Lỗi truy vấn:", err);
             res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
             return;
         }
-        res.json({ message: "Product deleted successfully" });
+        res.json({ message: "TT order fix successfully" });
     });
+});
+
+app.post("/order_detail", (req, res) => {
+    const { ID } = req.body;
+    const request = new sql.Request();
+    request.input("ID", sql.VarChar, ID);
+    request.query("SELECT Book_ID From Order_detail WHERE Order_ID = @ID;", (err, recordset) => {
+        if (err) {
+            console.error("Lỗi truy vấn:", err);
+            res.status(500).send("Lỗi truy vấn cơ sở dữ liệu.");
+            return;
+        }
+        const bookIDsString = recordset.recordset.map(item => `'${item.Book_ID}'`).join(',');
+        request.query(`SELECT * From Book WHERE ID in (${bookIDsString});`, (err1, recordse1) => {
+            if (err1) {
+                console.error("Lỗi truy vấn:", err);
+                res.status(500).send("Lỗi truy vấn cơ sở dữ liệu.");
+                return;
+            }
+            res.json(recordse1.recordset);
+        });
+    });
+});
+
+app.get("/list_bill", (req, res) => {
+    const request = new sql.Request();
+    request.query(
+        `SELECT ID, UserName, Email, SDT, Address, PthVC, PthTT, CONVERT(VARCHAR, Date, 23) as Date, CONVERT(VARCHAR, DatePay, 23) as DatePay, Price, TT FROM [Order] WHERE TT = 3`,
+        (err, recordset) => {
+            if (err) {
+                console.error("Lỗi truy vấn:", err);
+                res.status(500).send("Lỗi truy vấn cơ sở dữ liệu.");
+                return;
+            }
+            res.json(recordset.recordset);
+        }
+    );
 });
 
 const PORT = process.env.PORT || 5000;
@@ -688,3 +829,9 @@ app.listen(PORT, () => {
     console.log(`Server đang chạy tại http://localhost:${PORT}`);
     open(`http://localhost:${PORT}`);
 });
+
+
+// SELECT [Order].ID, [Order].User_ID, Infor_user.Name
+// FROM [Order], Infor_user, Login
+// WHERE [Order].User_ID = Login.UserName
+// AND Login.UserName = Infor_user.User_ID;

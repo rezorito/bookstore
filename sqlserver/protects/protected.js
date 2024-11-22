@@ -1,6 +1,5 @@
 async function checkUserLogin() {
     const token = localStorage.getItem('token');
-    console.log(token);
     if (!token) {
         alert('Bạn cần đăng nhập trước!');
         window.location.href = '/WLogin';
