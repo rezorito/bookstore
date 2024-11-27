@@ -23,6 +23,7 @@ async function LoadInforUser() {
     try {
         const dataUser = await getuser();
         const inforUser = await fetchDataInforUserFromServer(dataUser.user.UserName)
+        document.getElementById("user_id").innerHTML = dataUser.user.UserName || "";
         document.getElementById("user_name").value = inforUser[0].Name || "";
         document.getElementById("user_email").value = inforUser[0].Email || "";
         document.getElementById("user_sdt").value = inforUser[0].SDT || "";
@@ -64,12 +65,12 @@ document.getElementById("btn_Accept_Save").addEventListener('click', async funct
             },
             body: JSON.stringify({
                 User_ID: dataUser.user.UserName,
-                Name: Name,
-                Email: Email,
-                SDT: SDT,
-                Address: Address,
-                Gender: Gender,
-                Date: Date,
+                Name: Name ? Name : null,
+                Email: Email ? Email : null,
+                SDT: SDT ? SDT : null,
+                Address: Address ? Address : null,
+                Gender: Gender ? Gender : null,
+                Date: Date ? Date : null,
             })
         })
             .then((response) => response.json())

@@ -2,6 +2,7 @@ const openPopupBtn = document.getElementById('open-popupqr-btn');
 const closePopupBtn = document.getElementById('close-popupqr-btn');
 const popup = document.getElementById('popupqr');
 const bodyOverlay = document.getElementById('body-overlay');
+const priceTotal = document.getElementById('price-total')
 const qrcode = document.querySelector('.qrcodeimg')
 
 const checkInforUser = () => {
@@ -33,6 +34,9 @@ openPopupBtn.addEventListener('click', async function (e) {
     if (!checkInforUser()) {
         alert("Cần nhập đầy đủ thông tin trước")
     } else {
+        const rawdata = sessionStorage.getItem('ListBookPayment');
+        const data = JSON.parse(rawdata);
+        const dataBookID = data.map(item => item.BookID.trim());
         var payBankRadio = document.getElementById("pay_bank");
         if (payBankRadio.checked) {
             var verificationCodes = generateRandomString()
@@ -48,14 +52,11 @@ openPopupBtn.addEventListener('click', async function (e) {
             document.body.classList.add('opened');
             setTimeout(() => {
                 setInterval(() => {
-                    checkPaid(priceqrTotal, verificationCodes);
+                    checkPaid(priceqrTotal, verificationCodes, dataBookID);
                 }, 1000);
-            }, 20000);
+            }, 1000);
         } else {
             // const rawdata = sessionStorage.getItem('totalDSPayment');
-            const rawdata = sessionStorage.getItem('ListBookPayment');
-            const data = JSON.parse(rawdata);
-            const dataBookID = data.map(item => item.BookID.trim());
             fetchSuccessPayFromServer(dataBookID);
         }
     }
@@ -71,7 +72,7 @@ const API_Key = 'AK_CS.06a618a036af11efb7127b03250987c0.HFNqHvGRz5pDcoI1zM1cH7QC
 const API_Get_Paid = 'https://oauth.casso.vn/v2/transactions'
 
 let isSucess = false;
-async function checkPaid(priceqrTotal, verificationCodes) {
+async function checkPaid(priceqrTotal, verificationCodes, dataBookID) {
     if (isSucess) {
         return;
     } else {
@@ -85,16 +86,19 @@ async function checkPaid(priceqrTotal, verificationCodes) {
             const data = await response.json();
             var DSPaid = data.data.records;
             var length = data.data.records.length - 1;
-            var amount = DSPaid[length].amount
-            var description = DSPaid[length].description
-            console.log(DSPaid[length]);
-            if (amount >= priceqrTotal && description.includes(verificationCodes)) {
-                alert('Thanh toán thành công')
-                isSucess = true;
-                await fetchSuccessPayFromServer();
-                window.location.href = "/"
+            if (DSPaid[length]) {
+                var amount = DSPaid[length].amount
+                var description = DSPaid[length].description
+                if (amount >= priceqrTotal && description.includes(verificationCodes)) {
+                    // alert('Thanh toán thành công')
+                    isSucess = true;
+                    await fetchSuccessPayFromServer(dataBookID);
+                    window.location.href = "/"
+                } else {
+                    console.log('Chưa có giao dịch!');
+                }
             } else {
-                console.log('Chưa có giao dịch!');
+                console.log('Dữ liệu trống!');
             }
         } catch (e) {
             alert('Lỗi' + e.message)

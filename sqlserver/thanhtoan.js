@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     loadPaySP();
+    LoadInforUserTT();
 });
 
 function LoadSP() {
@@ -129,3 +130,38 @@ function LoadPrice() {
     document.getElementById('price-total').innerHTML = totalPay;
 }
 
+async function LoadInforUserTT() {
+    try {
+        const dataUser = await getuser();
+        const inforUser = await fetchDataInforUserTTFromServer(dataUser.user.UserName)
+        document.getElementById("nameUser").value = inforUser[0].Name || "";
+        document.getElementById("emailUser").value = inforUser[0].Email || "";
+        document.getElementById("sdtUser").value = inforUser[0].SDT || "";
+        document.getElementById("addressUser").value = inforUser[0].Address || "";
+        console.log(inforUser)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+async function fetchDataInforUserTTFromServer(UserName) {
+    try {
+        const response = await fetch("http://localhost:5000/get_inforUser", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                UserName: UserName
+            }),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Lỗi:", error);
+        return null;
+    }
+}

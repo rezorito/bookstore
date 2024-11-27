@@ -235,6 +235,10 @@ th {
     object-fit: cover;
 }
 
+.order-item__content {
+    width: 100%;
+}
+
 .order-item__content p {
     margin: 0;
     font-size: 12px;

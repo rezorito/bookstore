@@ -226,7 +226,20 @@ app.post("/add-user", (req, res) => {
                 res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
                 return;
             }
-            res.json({ message: "Product added successfully" });
+            request.query(
+                `
+                    INSERT INTO Infor_user (User_ID)
+                    VALUES (@dk_tk)
+                `,
+                (err1, result1) => {
+                    if (err1) {
+                        console.error("Lỗi truy vấn:", err1);
+                        res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu." });
+                        return;
+                    }
+                    res.json({ message: "User added successfully" });
+                }
+            );
         }
     );
 });
