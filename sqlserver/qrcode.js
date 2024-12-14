@@ -41,7 +41,8 @@ openPopupBtn.addEventListener('click', async function (e) {
         if (payBankRadio.checked) {
             var verificationCodes = generateRandomString()
             document.getElementById('codext').innerHTML = verificationCodes;
-            let priceqrTotal = priceTotal.innerText * 1000;
+            // let priceqrTotal = priceTotal.innerText * 1000;
+            let priceqrTotal = 10000;
             document.getElementById('TotalPayment').innerHTML = priceTotal.innerText;
             let QR = `https://img.vietqr.io/image/${Bank.Bank_ID}-${Bank.Bank_nummber}-qr_only.png?amount=${priceqrTotal}&addInfo=PAYMENT MA: ${verificationCodes}`;
             console.log(verificationCodes);

@@ -411,7 +411,6 @@ app.put("/fix-product", upload.single("image"), (req, res) => {
             //Ảnh mới
             const finalFileName = req.file.filename;
             imagePath = "/img_sql/" + finalFileName;
-
         }
         const { BookID, BookName, BookPrice, BookSale, BookContent, TheLoaiID } = bookData;
         const request = new sql.Request();

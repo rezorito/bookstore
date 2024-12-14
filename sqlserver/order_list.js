@@ -235,7 +235,7 @@ async function fetchFixTTOrderFromServer(ID, TT) {
         })
             .then((response) => response.json())
             .then((data) => {
-                alert(data.message);
+                alert("Đơn hàng cập nhật trạng thái thành công!");
                 LoadListOrder();
             })
             .catch((error) => {

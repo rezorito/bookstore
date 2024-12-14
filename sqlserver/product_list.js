@@ -159,7 +159,7 @@ function EditBook(Book) {
                     console.error("Lỗi:", error);
                 });
         } else {
-            alert("Vui lòng điền đầy đủ thông tin trước khi thêm!");
+            alert("Vui lòng điền đầy đủ thông tin trước khi sửa!");
         }
     });
 }
